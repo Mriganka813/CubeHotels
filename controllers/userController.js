@@ -23,9 +23,13 @@ module.exports.signup=async function(req,res){
         // console.log(result);
 
         const imageFile = req.file;
-        const result = await cloudinary.uploader.upload(imageFile.path);
-        console.log(result.secure_url);
-        fs.unlinkSync(imageFile.path);
+        let imageUrl = "https://cdn-icons-png.flaticon.com/128/1946/1946788.png"
+        if(imageFile){
+          const result = await cloudinary.uploader.upload(imageFile.path);
+          console.log(result.secure_url);
+          imageUrl = result.secure_url
+          fs.unlinkSync(imageFile.path);
+        }
         const user = new User({
           name,
           hotelName,
@@ -34,7 +38,7 @@ module.exports.signup=async function(req,res){
           number,
           address,
           gst,
-          image: result.secure_url, // Use the secure URL from Cloudinary
+          image: imageUrl, // Use the secure URL from Cloudinary
         });
     
         // // Save the user to the database
