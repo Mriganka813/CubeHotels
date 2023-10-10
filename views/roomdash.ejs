@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/roomdash.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%; ">Rooms
+    </h1>
+
+    <div class="main">
+        <div class="rooms">
+            
+            
+            <% for( let room of roomCat) {%>
+                <div class="room-type <%= roomCat.roomType %>">
+                    <h2> <%= room.roomType %> </h2>
+                    <p>available :<% if(room.available) {%> 
+                        <%= room.available %>
+                        <%}else{%>
+                            Add Rooms
+                        <%}%>
+                    </p>
+                    <p>Total :  <%= room.total %> </p>
+                    <a href="/select/<%=room._id%>">Select</a>
+                </div>
+            <%}%>
+        </div>
+    </div>
+
+</body>
+
+</html>

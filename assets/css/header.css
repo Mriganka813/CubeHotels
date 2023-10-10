@@ -1,0 +1,68 @@
+/* Reset some default styles for body and anchors */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Apply styles to the container */
+.container {
+    background-color: #fd8787;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the navigation bar */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style the logo */
+.logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Style the header text */
+.head {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Style the navigation links */
+.links a {
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+/* Add responsive styles */
+@media screen and (max-width: 768px) {
+    /* Adjust the navigation links for smaller screens */
+    .links {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .links a {
+        margin: 10px 0;
+    }
+
+    /* Show a hamburger menu icon for smaller screens */
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Hide the logo on smaller screens */
+    .logo {
+        display: none;
+    }
+}

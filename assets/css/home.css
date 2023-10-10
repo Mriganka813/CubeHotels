@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.dash{
+    display: flex;
+    width: 80%;
+    /* background-color: aquamarine; */
+    justify-content: space-evenly;
+    height: 30vh;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.dash a{
+    text-decoration: none;
+    height: 7vh;
+    border: 2px solid black;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

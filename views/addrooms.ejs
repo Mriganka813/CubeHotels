@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addrooms.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%; ">Rooms
+    </h1>
+
+    <main class="container">
+        <div class="form">
+            <form action="/push-room" method="post" class="add-rooms">
+
+                <div class="rooms">
+                    <label for="roomType">Select Room Type</label>
+
+                    <select name="roomType">
+                        <% for(let cat of Category) {%>
+                        <option name="rs" value="<%= cat.roomType%>"> <%= cat.roomType%> </option>
+                        <%}%>
+                    </select>
+                    <input type="text" name="roomNum" id="" placeholder="roomNum" required>
+                    <input type="number" name="price" placeholder="Price per Night" id="" required>
+                    <input type="number" name="capacity" placeholder="total capacity" required>
+                    <input type="number" name="gst" placeholder="gst in %" required>
+                    <!-- <textarea name="desc" id="" cols="30" rows="10"></textarea> -->
+                    <input type="submit" id="btn" value="add">
+                </div>
+
+
+            </form>
+        </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

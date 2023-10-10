@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bookings.css">
+
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="bookings">
+            <% for(guest of bookings) {%>
+            <div class="guest">
+                <div class="top">
+                    <h2> <%= guest.guestName %>  </h2>
+                    <span class="stat">
+                        <%= guest.status %> 
+                    </span>
+                </div>
+                <span class="book-id">BookingId: lalaalID</span>
+                <div class="cont">
+
+                    <div class="data">
+                        <span><%= guest.roomNum %> </span>
+                        <span><%= guest.checkIn %> </span>
+                        
+                    </div>
+
+                    <div class="action">
+                        <a href="/edit/<%= guest._id %> ">edit</a>
+                        <a href="/checkoutpage/<%= guest._id %>">checkout</a>
+                        <a href="/delete/<%= guest._id %> ">del</a>
+                    </div>
+                </div>
+            </div>
+            <%}%>
+           
+            <div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+
+</html>

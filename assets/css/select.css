@@ -1,0 +1,77 @@
+/* Apply basic styles to the body and main container */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style the rooms section */
+.rooms {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rooms h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the room data elements */
+.data {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.data p, .data a {
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: rgb(136, 243, 145);
+}
+
+/* Apply responsive styles using media queries */
+@media screen and (max-width: 768px) {
+    .rooms {
+        padding: 10px;
+    }
+    
+    .data p, .data a {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main {
+        padding: 10px;
+    }
+    
+    .rooms {
+        padding: 5px;
+    }
+    
+    .data p, .data a {
+        font-size: 14px;
+        padding: 5px;
+        margin: 3px;
+    }
+}
+
+
+.true{
+    background-color: rgb(243, 149, 149);
+    cursor: not-allowed;
+}
+
+.false{
+    
+    background-color: lime;
+}

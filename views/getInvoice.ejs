@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/invoice.css">
+
+</head>
+
+<body>
+
+    <div class="main">
+        
+        <div class="invoice">
+            <h1>Hotel Name</h1>
+            <div class="invoice-id">
+                <span> <%=invoice.invoiceId %> </span>
+            </div>
+            <div class="invoice-data">
+                <div class="guest">
+                    <p><%=invoice.guestName %></p>
+                    <p>Room Num : <%=invoice.roomNum %></p>
+                </div>
+                <span>Breakout</span>
+                <div class="bill-summary">
+                    <table>
+                        <tr>
+                            <th>Room Rent</th>
+                            <td><input type="number" name="rent" id="baseprice" value="<%= rent %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <th>- Discount</th>
+                            <td><input type="number" name="disc" id="disc" value="<%=invoice.discount %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <th>+ Service Charges</th>
+                            <td><input type="number" name="service" id="service" value="<%=invoice.serviceCharge %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <th>+ GST</th>
+                            <td><input type="number" name="gst" id="gst" value="<%=invoice.gst %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <th>Net</th>
+                            <td><input type="number" name="net" id="net" value="<%=preNet %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <th>- Advance Payment</th>
+                            <td><input type="number" name="adv" id="advance" value='<%=invoice.advance %>' readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Payble</th>
+                            <td><input type="number" name="adv" id="advance" value='<%=invoice.net %>' readonly>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="message">
+                    Thank you visit again
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="printButton">Print Invoice</button>
+    <script>
+        document.getElementById('printButton').addEventListener('click', function () {
+            // Get the content of the 'invoice' div
+            const invoiceContent = document.querySelector('.invoice').outerHTML;
+    
+            // Create a new window or tab
+            const printWindow = window.open('', '', 'width=600,height=600');
+    
+            // Write the content to the new window/tab
+            printWindow.document.open();
+            printWindow.document.write('<html><head><title>Print Invoice</title><link rel="stylesheet" href="/css/invoice.css"></head><body>');
+            printWindow.document.write(invoiceContent);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+    
+            // Wait for the content to load, then initiate the print
+            printWindow.onload = function () {
+                printWindow.print();
+                printWindow.close();
+            };
+        });
+    </script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+/* Apply basic styles to the body and center the heading */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    padding: 2%;
+
+}
+h1 {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+
+
+/* Style each room type */
+.room-type {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.room-type h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.room-type p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.room-type a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+/* Apply responsive styles using media queries */
+@media screen and (max-width: 768px) {
+    .room-type {
+        padding: 10px;
+    }
+
+    .room-type h2 {
+        font-size: 20px;
+    }
+
+    .room-type p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main {
+        padding: 10px;
+    }
+
+    .room-type {
+        padding: 5px;
+    }
+
+    .room-type h2 {
+        font-size: 18px;
+    }
+
+    .room-type p {
+        font-size: 14px;
+    }
+
+    .room-type a {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,39 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
+h1{
+    margin: 0%;
+    padding: 0%;
+}
+.bookings{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.guest{
+    width: 90%;
+    border: 1px solid black;
+    margin: 1%;
+}
+.top{
+display: flex;
+background-color: aquamarine;
+align-items: center;
+}
+.stat{
+    margin-left: 1%;
+}
+.cont{
+    display: flex;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.action{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/addguest.css">
+
+</head>
+
+<body>
+
+    <div class="main-section">
+        <div class="form">
+            <form action="/book-room/<%=room.roomNum%>" method="post">
+                <input type="text" class="rnum" placeholder="Room" name="roomNum" readonly value="<%=room.roomNum%>">
+                <div class="basic">
+                    <input type="text" placeholder="Name of guest" onchange="guestNames()" id="guest" name="guestName" required>
+                    <input type="number" placeholder="Number" name="phNumber" required>
+                </div>
+                <textarea name="allGuest" class="all-guest"  placeholder="All guests Names" id="allGuest" cols="30"
+                    rows="5"></textarea>
+                <div class="num-guest">
+                    <div class="type">
+                        <input type="number" id="child" onchange="catchTotal()" placeholder="Childern" name="childern">
+                        <input type="number" id="adult" onchange="catchTotal()" placeholder="adults" name="adults">
+                    </div>
+                    <input type="number" id="total" placeholder="Total" name="numberOfGuest" required>
+
+                </div>
+                <div class="date">
+                    <label for="checkin">CheckIn:</label>
+                    <input type="date" id="checkin" name="checkIn" required>
+                </div>
+
+                <div class="address">
+                    <textarea name="address" class="address-bar" placeholder="address" cols="30" rows="5" required></textarea>
+                </div>
+
+                <div class="payment">
+                    <input type="text" placeholder="CheckIn Time" name="checkInTime" required>
+                    <input type="number" placeholder="Advance Payment" name="advPayment" value=0>
+                </div>
+                <button type="submit">ADD</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+       function catchTotal(){
+        const child = parseInt(document.getElementById('child').value)
+        const adult = parseInt(document.getElementById('adult').value)
+        const total=document.getElementById('total')
+        const setTotal = child + adult
+
+        total.value=setTotal
+
+       }
+
+       function guestNames() {
+    const guest = document.getElementById('guest').value;
+    const allGuest = document.getElementById('allGuest');
+
+    allGuest.textContent += guest + '\n';
+}
+
+    </script>
+</body>
+
+</html>

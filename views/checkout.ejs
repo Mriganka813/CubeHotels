@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script> -->
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/css/checkout.css">
+
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="billing">
+            <h1>CheckOut</h1>
+            <div class="checkout">
+                <div class="data">
+                    <div class="data-block">
+                        <h2 id="gname">
+                            <%=guest.guestName %>
+                        </h2>
+                        <span>
+                            <%=guest.bookingId%>
+                        </span>
+                    </div>
+                    <div class="data-block">
+                        <input type="text" onchange="checkinTime()" id="cinTime" name="checkOutTime" placeholder="checkout Time">
+                    </div>
+                    <div class="data-block">
+                        <div class="date">
+                            <p>CheckIn date</p>
+                            <p id="checkInDate">
+                                <%=guest.checkIn %>
+                            </p>
+                        </div>
+                        <div class="date">
+                            <p>ChecOut date</p>
+                            <input type="date" onchange="countDays(); calculateNet();" name="date" id="checkOutDate">
+                        </div>
+                    
+                            
+                           
+                        
+                        <div class="date">
+                            <p>Total Night stays</p>
+                            <input type="number" name="night" id="night">
+                        </div>
+                    </div>
+                    
+                    <div class="data-block">
+                        <input type="number" onchange="addServiceCharges(); calculateNet();"
+                            placeholder="Additonal Charges" id="charge">
+                        <input type="number" onchange="addDiscount(); calculateNet();" placeholder="Discount Ammt"
+                            id="discount">
+
+                    </div>
+                    
+                    <div class="room-summ">
+                       Price:  <input type="number" name="rent" id="priceNight" readonly value="<%=room.price%>"> / night
+                    </div>
+
+                </div>
+                <div class="total">
+                    <form action="/proceed/<%=guest._id%>" method="post">
+                        <table class="total-table">
+                            <tr>
+                                <th>BookingId</th>
+                                <td><input type="text" name="bid" value='<%=guest.bookingId%>' readonly></td>
+                            </tr>
+                            <tr>
+                                <th>Room Rent</th>
+                                <td><input type="number" name="rent" id="baseprice" value=0 readonly></td>
+                            </tr>
+                            <tr>
+                                <th>- Advance Payment</th>
+                                <td><input type="number" name="adv" id="advance" value='<%=guest.advPayment%>' readonly>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>- Discount</th>
+                                <td><input type="number" name="disc" id="disc" value=0 readonly></td>
+                            </tr>
+                            <tr>
+                                <th>+ Service Charges</th>
+                                <td><input type="number" name="service" id="service" value=0 readonly></td>
+                            </tr>
+                            <tr>
+                                <th>+ GST</th>
+                                <td><input type="number" name="gst" id="gst" value="<%=room.gst%>" readonly></td>
+                            </tr>
+                            <tr>
+                                <th>Net</th>
+                                <td><input type="number" name="net" id="net" value=0 readonly></td>
+                            </tr>
+                            </tr>
+
+                        </table>
+                        <div class="summary">
+
+                            <div class="sum">
+                                <span class="bold"><%=guest.guestName%></span> stays for <input type="number" class="stay-day" id="stayDay"
+                                    name="stays">
+                                Nights from <span class="bold" ><%=guest.checkIn %></span> to <input type="text" id="cout" class="cout" name="cout">
+                                at <input type="text" id="setTime" name="checkOutTime">
+                            </div>
+                        </div>
+                        <input type="number" readonly value="<%=room.price%>" name="rent" class="hide">
+                        <button class="btn-summit" >Summit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/billing.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.invoice{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    /* padding: 2%; */
+    width: 150vh;
+}
+.invoice-head{
+    background-color: rgb(160, 147, 147);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5%;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+.bill-data{
+    display: flex;
+}
+.address{
+    display: flex;
+    /* border: 1px solid black; */
+    flex: 1;
+    padding: 1.5%;
+    font-size: 0.8rem;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    /* background-color: aqua; */
+}
+.button{
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.button button{
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(116, 248, 123);
+    padding: 0.8%;
+}
+.dates{
+    display: flex;
+    padding: 1%;
+    justify-content: space-between;
+    background-color: rgb(153, 153, 153);
+    padding: 0.5%;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+table{
+    width: 100%;
+}
+.calculation{
+    padding: 1%;
+}

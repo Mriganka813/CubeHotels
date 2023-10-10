@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="signup">
+            <form action="/user/signup" method="post" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Owner Name" id="" required>
+                <input type="text" name="hotelName" placeholder="Hotel Name" id="" required>
+                <input type="email" name="email" placeholder="Email Address" id="" required>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+                <input type="password" placeholder="Confirm Password" id="confirmPassword" required>
+                <input type="number" name="number" placeholder="Phone Number" id="" required>
+                <textarea name="address" placeholder="Address" cols="30" rows="5" required></textarea>
+                <input type="file" name="image" accept="image/*" placeholder="Upload an Image" id="">
+                <input type="text" name="gst" placeholder="GST" id="" >
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to check if passwords match
+        function checkPasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordMatchError = document.getElementById('passwordMatchError');
+    
+            if (password !== confirmPassword) {
+                passwordMatchError.textContent = 'Passwords do not match';
+            } else {
+                passwordMatchError.textContent = ''; // Clear error message
+            }
+        }
+    
+        // Add an event listener to the form's submit button
+        document.querySelector('form').addEventListener('submit', function (e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+    
+            if (password !== confirmPassword) {
+                e.preventDefault(); // Prevent form submission
+                alert('Passwords do not match. Please correct them.');
+            }
+        });
+    </script>
+    
+</body>
+
+</html>
