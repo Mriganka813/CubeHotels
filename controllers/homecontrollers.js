@@ -9,9 +9,7 @@ const User = require('../models/user')
 module.exports.home = async function (req, res) {
   try{
     const user = req.user;
-    
-
-        return res.render('home', {
+    return res.render('home', {
             title: "home",
             user: user // Pass the user object to the template
         });

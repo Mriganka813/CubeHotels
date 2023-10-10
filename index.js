@@ -49,7 +49,7 @@ cloudinary.config({
     },
     store: MongoStore.create({
 
-        mongoUrl: 'mongodb+srv://rpbarmaiya:mD9bbUM3HCKRjfxv@cluster0.5pzfsyi.mongodb.net/?retryWrites=true&w=majority',
+        mongoUrl: process.env.DATABASE_URL,
         autoRemove: 'disabled'
 
     },
