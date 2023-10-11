@@ -1,0 +1,41 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+.account-data{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.data{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aquamarine; */
+}
+
+table{
+    width: 50%;
+    /* background-color: brown; */
+    /* border: 1px solid black; */
+    padding: 1%;
+}
+tr,td{
+    /* text-align: center; */
+}
+.action-div{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5%;
+    /* background-color: aqua; */
+}
+
+.account-data a{
+    /* background-color: rgb(30, 172, 238); */
+    width: 50%;
+    color: blue;
+}

@@ -1,0 +1,35 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+.update-form{
+    display: flex;
+    width: 70%;
+    /* background-color: aquamarine; */
+    margin-top: 2%;
+    justify-content: center;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+.input input{
+    border-radius: 5px;
+    height: 5vh;
+    border: 1px solid black;
+    background-color: rgba(128, 128, 128, 0.151);
+}
+
+.btn-update{
+    margin-top: 2%;
+    background-color: rgb(57, 255, 57);
+    border: none;
+    padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;    
+
+}

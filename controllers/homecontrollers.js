@@ -8,10 +8,12 @@ const User = require('../models/user')
 
 module.exports.home = async function (req, res) {
   try{
-    
+    const userId=req.user.userId
+    const user = await User.findById(userId)
     return res.render('home', {
             title: "home",// Pass the user object to the template
-        });
+            user
+          });
   }catch(err){
     res.send(err)
   }

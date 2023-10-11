@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/account.css">
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="account-data">
+            <h1>Accounts Details</h1>
+             <div class="data">
+                <table>
+                    <tr>
+                        <th>Name :</th>
+                        <td><%=user.name%></td>
+                    </tr>
+                    <tr>
+                        <th>Hotel Name :</th>
+                        <td><%=user.hotelName%></td>
+                    </tr>
+                    <tr>
+                        <th>Email :</th>
+                        <td><%=user.email%></td>
+                    </tr>
+                    <tr>
+                        <th>Number</th>
+                        <td><%=user.number%></td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td><%=user.address%></td>
+                    </tr>.
+                </table>
+
+                <div class="action-div">
+                    <a href="/user/account/edit"> <i class="fa-solid fa-user-pen"></i> Edit </a>
+                    <a href="/update/password"> <i class="fa-solid fa-lock"></i> Update Password </a>
+                </div>
+                
+             </div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

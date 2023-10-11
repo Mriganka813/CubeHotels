@@ -7,6 +7,9 @@ const userSchema = mongoose.Schema({
         type:String,
         require: true
     },
+    gst:{
+        type:String
+    },
     hotelName:{
         type:String,
         require: true
@@ -33,7 +36,8 @@ const userSchema = mongoose.Schema({
     verified:{
         type:Boolean,
         default: false
-    }
+    },
+    
 
    },
     {

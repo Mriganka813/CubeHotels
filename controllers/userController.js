@@ -131,3 +131,66 @@ module.exports.deleteType = async(req,res)=>{
 
   return res.redirect('back')
 }
+
+module.exports.myAccount=async(req,res)=>{
+  try{
+    const {userId}=req.user
+    const user = await User.findById(userId)
+    console.log(user);
+    if(!user){
+      return res.redirect('/')
+    }
+    return res.render('account',{
+      title: user.name,
+      user,
+    })
+  }catch(err){
+    console.log(err);
+  }
+}
+
+
+module.exports.editAccount=async(req,res)=>{
+  const {userId} = req.user
+  const user = await User.findById(userId)
+
+  return res.render('editaccount',{
+    title: 'User',
+    user
+  })
+}
+
+module.exports.updateAccount=async(req,res)=>{
+  const {userId} = req.user
+  const {name, hotelName, email, number, address, gst, image}=req.body
+  const user = await User.findById(userId)
+  const imageFile = req.file;
+        let imageUrl = user.image
+        if(imageFile){
+          const result = await cloudinary.uploader.upload(imageFile.path);
+          console.log(result.secure_url);
+          imageUrl = result.secure_url
+          fs.unlinkSync(imageFile.path);
+        }
+
+        try {
+          await User.updateOne(
+            { _id: userId }, // Find the user by their _id
+            {
+              $set: {
+                name,
+                hotelName,
+                email,
+                number,
+                address,
+                gst,
+                image: imageUrl, // Update the image URL
+              },
+            }
+          );
+      
+          return res.redirect('back')
+        } catch (error) {
+          res.status(500).json({ error: 'Error updating user data' });
+        }
+}

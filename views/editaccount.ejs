@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/editaccount.css">
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="update-form">
+            <form action="/update/user" method="post">
+                <div class="input">
+                    <label for="hotelName">Name</label>
+                    <input type="text" name="name" id="name" value="<%=name%>">
+                </div>
+                <div class="input">
+                    <label for="hotelName">Hotel Name</label>
+                    <input type="text" name="hotelName" id="hotelName" value="<%=user.hotelName%>">
+                </div>
+                <div class="input">
+                    <label for="email">Email </label>
+                    <input type="text" name="email" id="email" value="<%=user.email%>">
+                </div>
+                <div class="input">
+                    <label for="number">Number</label>
+                    <input type="number" name="number" id="number" value="<%=user.number%>">
+                </div>
+                <div class="input">
+                    <label for="address">Address</label>
+                    <textarea name="address" id="address" cols="30" rows="3"><%=user.address%></textarea>
+                </div>
+                <div class="input">
+                    <label for="gst">GST</label>
+                    <input type="number" name="gst" id="gst" value="<%=user.gst%>">
+                </div>
+                <div class="input">
+                    <label for="name">Image</label>
+                    <input type="file" name="image" accept="image/*" placeholder="Upload an Image" id="">
+                </div>
+                <button class="btn-update" type="submit">Update</button>
+            </form> 
+        </div>
+            
+    </div>
+    
+
+</body>
+
+</html>

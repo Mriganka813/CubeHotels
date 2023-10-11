@@ -27,4 +27,6 @@ router.post('/addroom',isAuthenticatedUser,userController.addCategory)
 router.get('/signout', userController.signout);
 router.get('/delete/type/:id',isAuthenticatedUser,userController.deleteType)
 router.post('/login',userController.login)
+router.get('/account',isAuthenticatedUser,userController.myAccount)
+router.get('/account/edit',isAuthenticatedUser,userController.editAccount)
 module.exports = router; 

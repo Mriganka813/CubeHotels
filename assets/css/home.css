@@ -79,17 +79,17 @@
     width: min-content;
     font-size: 2rem;
 }
-.signout{
+.signout, .account{
     /* background-color: aquamarine; */
     height: 70%;
     width: 7vh;
    
 }
-.signout-btn{
+.signout-btn, .account-btn{
     height: 100%;
     width: 100%;
 }
-.signout-btn img{
+.signout-btn img, .account-btn img{
     height: 100%;
     width: 100%;
 }
