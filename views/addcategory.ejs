@@ -7,18 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/addroom.css">
+    <link rel="stylesheet" href="/css/addcat.css">
 
 </head>
 
 <body>
     <div class="main">
+        <div class="room-data">
 
-        <div class="rooms">
-            <form action="/user/addroom" method="post">
-                <input type="text" name="roomType" id="" placeholder="Enter Category">
-                <button>Add</button>
-            </form>
+            <div class="rooms">
+                <form action="/user/addroom" method="post">
+                    <input type="text" name="roomType" id="" placeholder="Enter Category">
+                    <button>Add</button>
+                </form>
+
+
+            </div>
+            <h1>Your Rooms</h1>
+            <div class="cat">
+                <% for(let rooms of category){%>
+                <div class="room-type">
+                    <%= rooms.roomType%>
+                    <a href="/user/delete/type/<%=rooms._id%>"><i class="fa-solid fa-trash"></i></a>
+                </div>
+                    <%}%>
+            </div>
         </div>
     </div>
 

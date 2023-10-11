@@ -23,25 +23,6 @@ const invoiceSchema = mongoose.Schema({
         type:String,
         require: true // booking ID
     },
-    
-    checkOut:{
-        type:String,
-        require: true
-    },
-    checkIn:{
-        type:String,
-        require: true
-    },
-    checkOutTime:{
-        type:String,
-    },
-    checkInTime:{
-        type:String,
-    },
-    advance:{
-        type:Number,
-        require: true
-    },
     discount:{
         type:Number,
         require: true
@@ -49,6 +30,12 @@ const invoiceSchema = mongoose.Schema({
     serviceCharge:{
         type:Number,
         require: true
+    },
+    checkout:{
+        type:String
+    },
+    checlIn:{
+        type:String
     },
     gst:{
         type:Number,
@@ -58,12 +45,11 @@ const invoiceSchema = mongoose.Schema({
         type:Number,
         require: true
     },
-    stay:{
+    rent:{
         type:Number
     },
-    address:{
-        type: String,
-        require: true
+    stay:{
+        type:Number //No. Of days 
     },
     hotelId:{
         type: mongoose.Schema.Types.ObjectId,

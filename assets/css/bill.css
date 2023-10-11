@@ -8,7 +8,10 @@
     flex-direction: column;
     border: 1px solid black;
     /* padding: 2%; */
-    width: 150vh;
+    width: 60vh;
+}
+.capital{
+    text-transform: capitalize;
 }
 .invoice-head{
     background-color: rgb(160, 147, 147);
@@ -52,9 +55,10 @@
     padding: 1%;
     justify-content: space-between;
     background-color: rgb(153, 153, 153);
-    padding: 0.5%;
+    padding: 0.8%;
     padding-right: 2%;
     padding-left: 2%;
+    font-weight: bold;
 }
 table{
     width: 100%;

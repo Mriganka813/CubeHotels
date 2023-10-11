@@ -62,6 +62,10 @@ const guestSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         // ref: 'User'
     },
+    invoiceId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Invoice'
+    },
     status:{
         type: String,
         default: "stay"

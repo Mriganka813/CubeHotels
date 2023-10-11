@@ -1,28 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
 
 .main{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     
 }
 
+
+
+*{
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Roboto', sans-serif;
+ }
+
+ .dash-head{
+    display: flex;
+    color: gray;
+    width: 90%;
+    height: 10vh;
+    align-items: center;
+    /* background-color: aquamarine; */
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 10%;
+ }
+
 .dash{
     display: flex;
-    width: 80%;
-    /* background-color: aquamarine; */
-    justify-content: space-evenly;
-    height: 30vh;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    width: 100%;
 }
-.dash a{
-    text-decoration: none;
-    height: 7vh;
-    border: 2px solid black;
-    width: 15%;
+
+.blocks {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    height: 80vh;
+    padding: 2%;
+}
+
+.cols{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    height: 50%;
+}
+
+.cols a{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 23%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.cols a:hover{
+    box-shadow: rgba(31, 130, 223, 0.473) 0px 5px 15px;
+}
+
+.link-btn{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color: aqua; */
+    color: gray;
 }
+.link-btn h1{
+    width: min-content;
+    font-size: 2rem;
+}
+.signout{
+    /* background-color: aquamarine; */
+    height: 70%;
+    width: 7vh;
+   
+}
+.signout-btn{
+    height: 100%;
+    width: 100%;
+}
+.signout-btn img{
+    height: 100%;
+    width: 100%;
+}
+/* .bg{
+    background-color: aqua;
+} */

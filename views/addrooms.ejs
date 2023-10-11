@@ -11,33 +11,62 @@
 
 <body>
 
-    <h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%; ">Rooms
-    </h1>
-
-    <main class="container">
-        <div class="form">
-            <form action="/push-room" method="post" class="add-rooms">
-
-                <div class="rooms">
-                    <label for="roomType">Select Room Type</label>
-
-                    <select name="roomType">
-                        <% for(let cat of Category) {%>
-                        <option name="rs" value="<%= cat.roomType%>"> <%= cat.roomType%> </option>
-                        <%}%>
-                    </select>
-                    <input type="text" name="roomNum" id="" placeholder="roomNum" required>
-                    <input type="number" name="price" placeholder="Price per Night" id="" required>
-                    <input type="number" name="capacity" placeholder="total capacity" required>
-                    <input type="number" name="gst" placeholder="gst in %" required>
-                    <!-- <textarea name="desc" id="" cols="30" rows="10"></textarea> -->
-                    <input type="submit" id="btn" value="add">
-                </div>
+    <div class="main">
 
 
-            </form>
-        </div>
-        </div>
+        <main class="form-container">
+            <div class="form">
+                <form action="/push-room" method="post" class="add-rooms">
+
+                    <div class="rooms">
+                        <label for="roomType">Select Room Type</label>
+
+                        <select name="roomType">
+                            <% for(let cat of Category) {%>
+                                <option name="rs" value="<%= cat.roomType%>">
+                                    <%= cat.roomType%>
+                                </option>
+                                <%}%>
+                        </select>
+                        <input type="text" name="roomNum" id="" placeholder="roomNum" required>
+                        <input type="number" name="price" placeholder="Price per Night" id="" required>
+                        <input type="number" name="capacity" placeholder="total capacity" required>
+                        <input type="number" name="gst" placeholder="gst in %" required>
+                        <!-- <textarea name="desc" id="" cols="30" rows="10"></textarea> -->
+                        <input type="submit" id="btn" value="add">
+                    </div>
+
+
+                </form>
+            </div>
+
+            <div class="room-table">
+                <table>
+                    <tr>
+                        <th>Room No</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Capacity</th>
+                        <th>GST</th>
+                        <th>Occupied</th>
+                        <th></th>
+                    </tr>
+                    <% rooms.sort((a, b) => b.createdAt - a.createdAt).forEach(room => { %>
+                        <tr>
+                            <td><%= room.roomNum %></td>
+                            <td><%= room.roomType %></td>
+                            <td><%= room.price %></td>
+                            <td><%= room.capacity %></td>
+                            <td><%= room.gst %></td>
+                            <td><%= room.occupied %></td>
+                            <td><a href="/del/room/<%= room._id %>"><i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+            
+    </div>
+    </div>
     </main>
 
 </body>

@@ -30,6 +30,13 @@
     max-width: 400px;
     display: flex;
     flex-direction: column;
+    padding: 3%;
+    margin-top: 5%;
+  }
+
+  .form{
+    margin-top: 2%;
+    padding: 2%;
   }
   
   /* Form elements */

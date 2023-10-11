@@ -89,6 +89,15 @@ module.exports.login=async function(req,res){
       }
 }
 
+module.exports.addCategoryPage=async(req,res)=>{
+  const userId = req.user.userId
+  const category = await RoomTypes.find({owner:userId})
+  return res.render('addcategory',{
+    title:'Category',
+    category
+})
+}
+
 module.exports.addCategory=async(req,res)=>{
     try{
         const userId = req.user.userId
@@ -114,3 +123,11 @@ module.exports.signout = function (req, res) {
   // Redirect the user to a login or home page, or you can send a JSON response
   res.redirect('/user/login-page'); // Example redirect route
 };
+
+
+module.exports.deleteType = async(req,res)=>{
+  const {id} = req.params
+  const type = await RoomTypes.deleteOne({_id:id})
+
+  return res.redirect('back')
+}

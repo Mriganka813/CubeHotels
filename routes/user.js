@@ -17,17 +17,14 @@ const storage = multer.memoryStorage();
 router.post('/signup', upload.single('image'), userController.signup);
 router.get('/login-page',async(req,res)=>{
     return res.render('login',{
-        title:'Login'
+        title:'Login',
+        excludeHeader: true 
     })
 })
 
-router.get('/add-category',async(req,res)=>{
-    return res.render('addcategory',{
-        title:'Category'
-    })
-})
+router.get('/add-category',isAuthenticatedUser,userController.addCategoryPage)
 router.post('/addroom',isAuthenticatedUser,userController.addCategory)
 router.get('/signout', userController.signout);
-
+router.get('/delete/type/:id',isAuthenticatedUser,userController.deleteType)
 router.post('/login',userController.login)
 module.exports = router; 

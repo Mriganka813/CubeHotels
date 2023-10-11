@@ -11,6 +11,9 @@ router.get('/add-guest/:roomId',isAuthenticatedUser,homeController.addGuest)
 
 router.post('/book-room/:roomNum',isAuthenticatedUser,homeController.addGuestData)
 router.get('/bookings',isAuthenticatedUser,homeController.renderBookings)
+
+router.get('/recent-bookings',isAuthenticatedUser,homeController.recentBookings)
+
 router.post('/push-room',isAuthenticatedUser,homeController.addRoom)
 
 router.get('/room-dash',isAuthenticatedUser,homeController.renderRoomDash)
@@ -30,6 +33,9 @@ router.use('/admin',require('./admin'))
 
 router.get('/sample',isAuthenticatedUser,homeController.sample)
 
+router.get('/del/room/:roomId',isAuthenticatedUser,homeController.deleteRoom)
+
+router.get('/get/invoices/:guestId',isAuthenticatedUser,homeController.getInvoice)
 
 router.use('/user',require('./user'))
 

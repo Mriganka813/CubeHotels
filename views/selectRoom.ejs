@@ -19,7 +19,7 @@
             <div class="data">
                 <% for (data of room) { %>
                     <% if (data.occupied) { %>
-                        <p class="<%= data.occupied %>"><%= data.roomNum %> </p>
+                        <p style="background-color: rgb(250, 112, 112);" class="<%= data.occupied %>"><%= data.roomNum %> </p>
                         <% } else { %>
                             <a class="<%= data.occupied %>" href="/add-guest/<%= data._id %>"><%= data.roomNum %>  </a>
                     <% } %>

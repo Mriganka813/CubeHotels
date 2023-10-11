@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+
 /* Reset default margin and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
   }
   
   /* Global styles */
@@ -13,12 +17,19 @@
   
   /* Container for the form */
   .main {
+    color: gray;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+    }
   
+  .room-data{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: aquamarine; */
+  }
   /* Form styles */
   .rooms {
     background-color: #ffffff;
@@ -28,6 +39,8 @@
     width: 90%;
     max-width: 400px;
     text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
   }
   
   .rooms form {
@@ -58,6 +71,25 @@
     background-color: #0056b3;
   }
   
+  .cat{
+    /* background-color: rgb(101, 109, 106); */
+    width: 90%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .room-type{
+    width: 20%;
+    margin: 1%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-transform: uppercase;
+  }
+
   /* Media queries for responsiveness */
   @media (max-width: 600px) {
     .rooms {

@@ -16,37 +16,32 @@
     <div class="main">
         <div class="billing">
             <h1>CheckOut</h1>
+            <div class="booking-id">
+                <p>Booking ID : <%=guest.bookingId%></p>
+            </div>
             <div class="checkout">
+                
                 <div class="data">
                     <div class="data-block">
-                        <h2 id="gname">
-                            <%=guest.guestName %>
-                        </h2>
-                        <span>
-                            <%=guest.bookingId%>
-                        </span>
-                    </div>
-                    <div class="data-block">
-                        <input type="text" onchange="checkinTime()" id="cinTime" name="checkOutTime" placeholder="checkout Time">
-                    </div>
-                    <div class="data-block">
-                        <div class="date">
-                            <p>CheckIn date</p>
-                            <p id="checkInDate">
-                                <%=guest.checkIn %>
-                            </p>
+                        <p><%=guest.guestName %></p>
+                        <div class="flex">
+                            <p> CheckIn date: <p id="checkInDate"><%=guest.checkIn %></p>  <p>| <%=guest.checkInTime %> </p> </p>
                         </div>
-                        <div class="date">
-                            <p>ChecOut date</p>
-                            <input type="date" onchange="countDays(); calculateNet();" name="date" id="checkOutDate">
-                        </div>
-                    
-                            
-                           
+                    </div>
                         
+                    
+                    <div class="data-block">
                         <div class="date">
-                            <p>Total Night stays</p>
-                            <input type="number" name="night" id="night">
+                            <label for="cinTime">CheckIn</label>
+                            <input class="inpt" type="text" onchange="checkinTime()" id="cinTime" name="checkOutTime" placeholder="checkout Time">
+                        </div>
+                        <div class="date">
+                            <label for="checkOutDate">CheckOut Date</label>
+                            <input class="inpt" type="date" onchange="countDays(); calculateNet();" name="date" id="checkOutDate">
+                        </div>
+                        <div class="date">
+                            <label for="night">Total Nights</label>
+                            <input class="inpt" type="number" name="night" id="night">
                         </div>
                     </div>
                     
@@ -59,7 +54,7 @@
                     </div>
                     
                     <div class="room-summ">
-                       Price:  <input type="number" name="rent" id="priceNight" readonly value="<%=room.price%>"> / night
+                         <input class="hide" type="number" name="rent" id="priceNight" readonly value="<%=room.price%>"> 
                     </div>
 
                 </div>
@@ -98,7 +93,7 @@
                             </tr>
 
                         </table>
-                        <div class="summary">
+                        <div class="summary hide" >
 
                             <div class="sum">
                                 <span class="bold"><%=guest.guestName%></span> stays for <input type="number" class="stay-day" id="stayDay"

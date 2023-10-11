@@ -15,33 +15,27 @@
 
     <div class="main">
         <div class="bookings">
-            <% for(guest of bookings) {%>
+            <% for(let i = bookings.length - 1; i >= 0; i--) { %>
+                <% const guest = bookings[i]; %>
                 <div class="guest">
                     <div class="guest-data">
-                        <p>  Guest Name : <%= guest.guestName %>
-                        </p>
-                        <p>CheckIn : <%= guest.checkIn %> | <%= guest.checkInTime %>
-                        </p>
-                        <p>Room No. : <%= guest.roomNum %>
-                        </p>
-                        <p>booking ID : <%= guest.bookingId %>
-                        </p>
-                        <p>Ststus : <%= guest.status %>
-                        </p>
+                        <p>Guest Name: <%= guest.guestName %></p>
+                        <p>CheckIn: <%= guest.checkIn %> | <%= guest.checkInTime %></p>
+                        <p>Room No.: <%= guest.roomNum %></p>
+                        <p>Booking ID: <%= guest.bookingId %></p>
+                        <p>Status: <%= guest.status %></p>
                     </div>
                     <div class="action">
-                        <a href="/edit/<%= guest._id %> ">edit</a>
-                        <a href="/checkoutpage/<%= guest._id %>">checkout</a>
-            
+                        <!-- <a href="/edit/<%= guest._id %>">Details</a> -->
+                        <a href="/get/invoices/<%= guest._id %>">Invoice</a>
                     </div>
                 </div>
-                <%}%>
+            <% } %>
         </div>
-
-            <div>
-
-            </div>
+        <div>
+        </div>
     </div>
+    
     </div>
 
 

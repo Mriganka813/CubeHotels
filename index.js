@@ -4,7 +4,7 @@ var expressLayouts = require('express-ejs-layouts');
 const port = process.env.PORT;
 const cloudinary = require('cloudinary').v2;
 const cookieParser = require('cookie-parser');
-
+const customMware= require('./config/flash')
 // app.use(express.json());
 
 const db=require('./config/mongoose');
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 const MongoStore = require('connect-mongo');
 
 
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // cloudinary.config({ 
 //     cloud_name: 'dw8rpoiil', 
@@ -70,6 +70,8 @@ const MongoStore = require('connect-mongo');
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+app.use(flash());
+app.use(customMware.setFlash)
 
 app.use('/', require('./routes'));
 

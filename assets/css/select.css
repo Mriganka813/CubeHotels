@@ -37,6 +37,10 @@ body {
     border-radius: 5px;
     background-color: rgb(136, 243, 145);
 }
+.true{
+    background-color: rgb(224, 99, 99);
+}
+
 
 /* Apply responsive styles using media queries */
 @media screen and (max-width: 768px) {

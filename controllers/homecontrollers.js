@@ -8,10 +8,9 @@ const User = require('../models/user')
 
 module.exports.home = async function (req, res) {
   try{
-    const user = req.user;
+    
     return res.render('home', {
-            title: "home",
-            user: user // Pass the user object to the template
+            title: "home",// Pass the user object to the template
         });
   }catch(err){
     res.send(err)
@@ -42,31 +41,51 @@ module.exports.renderAddRoom = async (req, res) => {
   try{
 
     const userId = req.user.userId
+    const rooms = await Rooms.find({owner:userId})
     const Category = await RoomTypes.find({ owner: userId })
     // const rooms=await Rooms.find({})
     
     res.render('addrooms', {
       title: "Add",
+      rooms,
       Category
     })
   }catch(err){
     res.send(err)
   }
+
 }
 module.exports.renderRoomDash = async (req, res) => {
-  try{
+  try {
+    const userId = req.user.userId;
 
-    const userId = req.user.userId
-    const roomCat = await RoomTypes.find({ owner: userId })
-    console.log(roomCat);
+    // Fetch room categories from the first collection (RoomTypes)
+    const roomCat = await RoomTypes.find({ owner: userId });
+
+    // Create an array to store available room counts for each category
+    const availableRoomCounts = [];
+
+    // Loop through each room category and count available rooms
+    for (const category of roomCat) {
+      const availableRoomsCount = await Rooms.countDocuments({
+        owner: userId,
+        roomTypeId: category._id,
+        occupied: false,
+      });
+
+      availableRoomCounts.push(availableRoomsCount);
+    }
+
     res.render('roomdash', {
-      title: 'DAshBoard',
-      roomCat
-    })
-  }catch(err){
-    res.send(err)
+      title: 'Rooms Dashboard',
+      roomCat,
+      availableRoomCounts,
+    });
+  } catch (err) {
+    res.send(err);
   }
-}
+};
+
 
 module.exports.addRoom = async (req, res) => {
   try {
@@ -82,6 +101,13 @@ module.exports.addRoom = async (req, res) => {
 
     const cat = await RoomTypes.findOne({ roomType: roomType,owner:userId })
     console.log(cat);
+
+    const findRoom = await Rooms.findOne({roomNum:roomNum, owner:userId})
+    if(findRoom){
+      req.flash('error','Room Already Present');
+      return res.redirect('back')
+    }
+
     const newRoom = new Rooms({
       ...req.body,
       roomTypeId: cat._id,
@@ -93,9 +119,24 @@ module.exports.addRoom = async (req, res) => {
     const updateRoom = await RoomTypes.findOne({ owner:userId, roomType: roomType });
     updateRoom.total++
     await updateRoom.save()
-    res.redirect('/')
+    req.flash('success','Added');
+    res.redirect('back')
   } catch (err) {
     console.log(err);
+    res.send(err)
+  }
+}
+
+// Delete Room
+module.exports.deleteRoom= async(req,res)=>{
+  try{
+    const {roomId}=req.params
+
+  const delRoom = await Rooms.deleteOne({_id:roomId})
+ 
+  req.flash('error','Deleted');
+  return res.redirect('back')
+  }catch(err){
     res.send(err)
   }
 }
@@ -214,6 +255,16 @@ module.exports.renderBookings = async (req, res) => {
   })
 }
 
+module.exports.recentBookings=async(req,res)=>{
+  const userId=req.user.userId
+  const bookings = await Guest.find({ status: "leave",hotelId:userId })
+  res.render('allbookings', {
+    title: 'Bookings',
+    bookings
+  })
+
+}
+
 module.exports.renderCheckInBookings = async (req, res) => {
   const userId = req.user.userId
   const bookings = await Guest.find({ status: "stay",hotelId:userId })
@@ -254,8 +305,16 @@ module.exports.checkout = async (req, res) => {
     room.occupied = false
     await room.save()
     room.guest = null
-    await guest.save()
-    console.log(guest);
+  
+    // console.log(guest);
+    
+    
+    
+    const preNet = parseInt(net) + parseInt(adv)
+    
+    const calGst= preNet * room.gst/100
+    const total = preNet + calGst
+    
     
     const invoice = new Invoice({
       guestName: guest.guestName,
@@ -265,21 +324,18 @@ module.exports.checkout = async (req, res) => {
       invoiceId: guest.bookingId,
       checkout: cout,
       checlIn: guest.checkIn,
-      advance: adv,
       discount: disc,
       serviceCharge: service,
-      gst,
-      net,
+      gst:calGst,
+      rent:room.price,
+      net:total,
       hotelId,
       stay:stays
     })
-    
     await invoice.save()
-    const preNet = parseInt(net) + parseInt(adv)
-    
-    const calGst= preNet * room.gst/100
-    const total = preNet + calGst
-    
+
+    guest.invoiceId = invoice._id
+    await guest.save()
     // console.log(invoice);
     
     return res.render('sample', {
@@ -294,9 +350,33 @@ module.exports.checkout = async (req, res) => {
       total
     })
   }catch(err){
+    console.log(err);
     res.send(err)
   }
     
+}
+
+module.exports.getInvoice=async(req,res)=>{
+  try{
+    const {guestId} = req.params
+    const userId = req.user.userId
+    const hotel = await User.findById(userId)
+    const guest= await Guest.findById(guestId)
+    const invoice = await Invoice.findById(guest.invoiceId)
+    const room = await Rooms.findById(guest.roomId)
+
+    return res.render('invoices',{
+      title:'INVOICE',
+      guest,
+      invoice,
+      hotel,
+      room
+    })
+
+    
+  }catch(error){
+    console.log(error);
+  }
 }
 
 module.exports.checkoutPage = async (req, res) => {

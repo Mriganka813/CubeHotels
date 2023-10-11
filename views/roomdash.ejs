@@ -16,23 +16,27 @@
 
     <div class="main">
         <div class="rooms">
-            
-            
-            <% for( let room of roomCat) {%>
-                <div class="room-type <%= roomCat.roomType %>">
-                    <h2> <%= room.roomType %> </h2>
-                    <p>available :<% if(room.available) {%> 
-                        <%= room.available %>
-                        <%}else{%>
-                            Add Rooms
-                        <%}%>
-                    </p>
-                    <p>Total :  <%= room.total %> </p>
-                    <a href="/select/<%=room._id%>">Select</a>
-                </div>
-            <%}%>
+          <% for (let i = 0; i < roomCat.length; i++) { %>
+            <div class="room-type <%= roomCat[i].roomType %>">
+
+              <div class="details">
+                <h2><%= roomCat[i].roomType %></h2>
+              <p>
+                Available:
+                <% if (availableRoomCounts[i] !== undefined) { %>
+                  <%= availableRoomCounts[i] %>
+                <% } else { %>
+                  0
+                <% } %>
+              </p>
+              <p>Total: <%= roomCat[i].total %></p>
+              </div>
+              <a class="select" href="/select/<%= roomCat[i]._id %>">Select</a>
+            </div>
+          <% } %>
         </div>
-    </div>
+      </div>
+      
 
 </body>
 
