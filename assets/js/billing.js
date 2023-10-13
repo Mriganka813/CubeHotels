@@ -59,12 +59,13 @@ function calculateNet() {
     const discount = parseInt(document.getElementById('disc').value);
     const advance = parseInt(document.getElementById('advance').value);
     const charge = parseInt(document.getElementById('service').value);
-    // const gst = parseFloat(document.getElementById('gst').value);
+    const gst = parseFloat(document.getElementById('gst').value);
 
+    const gstAmt = (rent - discount) * gst/100
 
     console.log(typeof (rent) , "rent");
     const netPrice = document.getElementById('net')
-    const net = (rent + charge ) - advance - discount
+    const net = (rent + charge + gstAmt ) - advance - discount
     console.log(net);
     netPrice.value = net
     

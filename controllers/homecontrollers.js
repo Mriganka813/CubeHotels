@@ -164,7 +164,7 @@ module.exports.select = async (req, res) => {
 
 
 function generateUniqueBookingId() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let bookingId = '';
 
   // Generate a random ID
