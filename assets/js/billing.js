@@ -61,7 +61,7 @@ function calculateNet() {
     const charge = parseInt(document.getElementById('service').value);
     const gst = parseFloat(document.getElementById('gst').value);
 
-    const gstAmt = (rent - discount) * gst/100
+    const gstAmt = (rent) * gst/100
 
     console.log(typeof (rent) , "rent");
     const netPrice = document.getElementById('net')

@@ -61,46 +61,62 @@
                 </span>
                 <span> CheckOut <%=guest.checkOut%></span>
             </div>
-
+            <hr>
             <div class="calculation">
-                <table>
+                <table class="upper-table">
                     <tr>
-                        <th> Room No. </th>
+                        <td class="bold"> Room No. </td>
+                        <td class="bold">No. of Days</td>
+                        <td class="bold">Price (per night)</td>
+                        <td class="bold">GST</td>
+                        <td class="bold">Total</td>
+                        
+                    </tr>
+                    <tr>
                         <td> <%=invoice.roomNum%></td>
-
-                    </tr>
-                    <tr>
-                        <th>Price (per night)</th>
-                        <td><%= invoice.rent %></td>
-
-                    </tr>
-                    <tr>
-                        <th>No. of Days</th>
                         <td><%=invoice.stay%></td>
-
-                    </tr>
-                    <tr>
-                        <th>Discount</th>
-                        <td><%=invoice.discount%></td>
-
-                    </tr>
-                    <tr>
-                        <th>Service Charge</th>
-                        <td><%=invoice.serviceCharge%></td>
-
-                    </tr>
-                    <tr>
-                        <th>GST</th>
+                        <td><%= invoice.rent %></td>
                         <td><%=invoice.gst%> ( <%=room.gst%>% ) </td> 
+                        <td><%= (invoice.rent * invoice.stay) %></td>
 
                     </tr>
-                    <tr>
-                        <th>Total</th>
-                        <td><%=invoice.net%></td>
-
-                    </tr>
+                    
                       
                 </table>
+                <hr>
+                <div class="cal">
+                    <div class="lower"></div>
+                    <div class="lower">
+                        <table class="cal-table">
+                            <tr>
+                                <td>Sub Total</td>
+                                <td>Rs. <%= invoice.rent %></td>
+                            </tr>
+                            <tr>
+                                <td>GST Ammount</td>
+                                <td>Rs. <%=invoice.gst%></td>
+                            </tr>
+                            <tr>
+                                <td>Additional Charges</td>
+                                <td>Rs. <%=invoice.serviceCharge%></td>
+                            </tr>
+                            <tr>
+                                <td class="dis">Discount</td>
+                                <td class="dis">Rs. <%=invoice.discount%></td>
+                            </tr>
+                        
+                            
+                            <tr class="tot">
+                                <td>Net Ammount</td>
+                                <td>Rs. <%= invoice.net %> </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <h2>Thank You..</h2>
+                    <h3>Please Visit Again</h3>
+                </div>
             </div>
         </div>
     </div>

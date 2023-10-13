@@ -330,9 +330,9 @@ module.exports.checkout = async (req, res) => {
     
     const preNet = parseInt(net) + parseInt(adv)
     
-    const calGst= preNet * room.gst/100
-    const total = preNet + calGst
-    
+    const subTotal = room.rentg * stays
+    const calGst= subTotal * room.gst/100
+    const total = subTotal + calGst - disc
     
     const invoice = new Invoice({
       guestName: guest.guestName,
@@ -345,10 +345,11 @@ module.exports.checkout = async (req, res) => {
       discount: disc,
       serviceCharge: service,
       gst:calGst,
-      rent:room.price,
+      rent:subTotal,
       net:total,
       hotelId,
-      stay:stays
+      stay:stays,
+      subTotal
     })
     await invoice.save()
 
@@ -365,7 +366,8 @@ module.exports.checkout = async (req, res) => {
       hotel,
       room,
       calGst,
-      total
+      total,
+      invoice
     })
   }catch(err){
     console.log(err);

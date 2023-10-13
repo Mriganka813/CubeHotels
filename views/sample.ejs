@@ -8,13 +8,23 @@
     <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/bill.css">
+    <style type="text/css" media="print">
+        @page {
+            size: auto; 
+            margin: 0; /* Remove default margins */
+        }
+        body {
+            margin: 0; /* Remove default body margins */
+        }
 
+        
+    </style>
 </head>
 
 <body>
     <div class="main">
-        <h1>Invoice</h1>
-        <div  class="invoice">
+        <h1>Invoice...</h1>
+        <div id="invoice" class="invoice">
             <div class="invoice-head" style="background-color: rgb(153, 151, 148);">
                 <span>Invoice : <%=guest.bookingId %></span>
                 <span>Date : <%=guest.checkOut%> </span>
@@ -51,68 +61,85 @@
                 </span>
                 <span> CheckOut <%=guest.checkOut%></span>
             </div>
-
+            <hr>
             <div class="calculation">
-                <table>
+                <table class="upper-table">
                     <tr>
-                        <th> Room No. </th>
+                        <td class="bold"> Room No. </td>
+                        <td class="bold">No. of Days</td>
+                        <td class="bold">Price (per night)</td>
+                        <td class="bold">GST</td>
+                        <td class="bold">Total</td>
+                        
+                    </tr>
+                    <tr>
                         <td> <%=invoice.roomNum%></td>
-
-                    </tr>
-                    <tr>
-                        <th>Price (per night)</th>
-                        <td><%= invoice.rent %></td>
-
-                    </tr>
-                    <tr>
-                        <th>No. of Days</th>
                         <td><%=invoice.stay%></td>
-
-                    </tr>
-                    <tr>
-                        <th>Discount</th>
-                        <td><%=invoice.discount%></td>
-
-                    </tr>
-                    <tr>
-                        <th>Service Charge</th>
-                        <td><%=invoice.serviceCharge%></td>
-
-                    </tr>
-                    <tr>
-                        <th>GST</th>
+                        <td><%= invoice.rent %></td>
                         <td><%=invoice.gst%> ( <%=room.gst%>% ) </td> 
+                        <td><%= (invoice.rent * invoice.stay) %></td>
 
                     </tr>
-                    <tr>
-                        <th>Total</th>
-                        <td><%=total%></td>
-
-                    </tr>
+                    
                       
                 </table>
+                <hr>
+                <div class="cal">
+                    <div class="lower"></div>
+                    <div class="lower">
+                        <table class="cal-table">
+                            <tr>
+                                <td>Sub Total</td>
+                                <td>Rs. <%= invoice.rent %></td>
+                            </tr>
+                            <tr>
+                                <td>GST Ammount</td>
+                                <td>Rs. <%=invoice.gst%></td>
+                            </tr>
+                            <tr>
+                                <td>Additional Charges</td>
+                                <td>Rs. <%=invoice.serviceCharge%></td>
+                            </tr>
+                            <tr>
+                                <td class="dis">Discount</td>
+                                <td class="dis">Rs. <%=invoice.discount%></td>
+                            </tr>
+                        
+                            
+                            <tr class="tot">
+                                <td>Net Ammount</td>
+                                <td>Rs. <%= invoice.net %> </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <h2>Thank You..</h2>
+                    <h3>Please Visit Again</h3>
+                </div>
             </div>
         </div>
     </div>
     <div class="button">
 
         <button id="printButton">Print Invoice</button>
+        <!-- <a target="_blank" href="/print/bill/<%=guest._id%>">Print</a> -->
     </div>
     <script>
         document.getElementById('printButton').addEventListener('click', function () {
             // Get the content of the 'invoice' div
             const invoiceContent = document.querySelector('.invoice').outerHTML;
-    
+
             // Create a new window or tab
-            const printWindow = window.open('', '', 'width=600,height=600');
-    
+            const printWindow = window.open('', '', 'width=800,height=600'); // Adjust the width as needed for better A4 layout
+
             // Write the content to the new window/tab
             printWindow.document.open();
             printWindow.document.write('<html><head><title>Print Invoice</title><link rel="stylesheet" href="/css/bill.css"></head><body>');
             printWindow.document.write(invoiceContent);
             printWindow.document.write('</body></html>');
             printWindow.document.close();
-    
+
             // Wait for the content to load, then initiate the print
             printWindow.onload = function () {
                 printWindow.print();
