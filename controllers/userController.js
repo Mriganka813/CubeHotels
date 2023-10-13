@@ -6,8 +6,6 @@ const bcrypt = require('bcrypt');
 const RoomTypes = require('../models/roomType')
 const fs = require('fs');
 
-
-
 module.exports.signup=async function(req,res){
     try {
         const { name, hotelName, email, password, number, address,gst } = req.body;
@@ -58,7 +56,6 @@ module.exports.signup=async function(req,res){
       }
 }
   
-
 module.exports.login=async function(req,res){
     try {
         const { email, password } = req.body;
