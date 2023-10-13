@@ -312,6 +312,8 @@ module.exports.checkout = async (req, res) => {
       checkOutTime
     } = req.body
     
+
+    console.log(req.body);
     const guest = await Guest.findById(id)
 
     guest.checkOut = cout
@@ -330,9 +332,9 @@ module.exports.checkout = async (req, res) => {
     
     const preNet = parseInt(net) + parseInt(adv)
     
-    const subTotal = room.rentg * stays
+    const subTotal = room.price * parseInt(stays)
     const calGst= subTotal * room.gst/100
-    const total = subTotal + calGst - disc
+    const total = subTotal + calGst - disc + service
     
     const invoice = new Invoice({
       guestName: guest.guestName,
@@ -370,7 +372,7 @@ module.exports.checkout = async (req, res) => {
       invoice
     })
   }catch(err){
-    console.log(err);
+    // console.log(err);
     res.send(err)
   }
     

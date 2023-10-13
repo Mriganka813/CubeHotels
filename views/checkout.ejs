@@ -18,6 +18,8 @@
             <h1>CheckOut</h1>
             <div class="booking-id">
                 <p>Booking ID : <%=guest.bookingId%></p>
+                <%=room.price%>
+                <p><%=room.roomNum%></p>
             </div>
             <div class="checkout">
                 
@@ -46,10 +48,18 @@
                     </div>
                     
                     <div class="data-block">
-                        <input type="number" onchange="addServiceCharges(); calculateNet();"
-                            placeholder="Additonal Charges" id="charge">
-                        <input type="number" onchange="addDiscount(); calculateNet();" placeholder="Discount Ammt"
-                            id="discount">
+                        <div class="ipt">
+
+                            <label for="">Additional Charges</label>
+                            <input type="number"  onchange="addServiceCharges(); calculateNet();"
+                            placeholder="Additonal Charges" id="charge" value=0>
+                        </div>
+                        <div class="ipt">
+
+                            <label for="">Discount</label>
+                            <input type="number" onchange="addDiscount(); calculateNet();" placeholder="Discount Ammt"
+                            id="discount" value=0>
+                        </div>
 
                     </div>
                     

@@ -7,7 +7,8 @@ const basePrice = document.getElementById('baseprice')
 // Get the Check-Out date input element
 function countDays() {
     let diff = 0
-    const price = document.getElementById('priceNight').value
+    const basePrice = document.getElementById('baseprice')
+    const price = parseInt(document.getElementById('priceNight').value)
     const checkOutInput = document.getElementById('checkOutDate').value;
     const checkInDate = document.getElementById('checkInDate').innerText
     const cout = document.getElementById('cout')
