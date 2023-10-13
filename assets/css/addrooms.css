@@ -147,3 +147,24 @@ th,td{
 th{
     background-color: rgb(61, 150, 252);
 }
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.pagination ul{
+    width: 80%;
+    display: flex;
+}
+.pagination ul li{
+    list-style: none;
+    margin: 2%;
+    border: 1px solid black;
+    width: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination a{
+    text-decoration: none;
+    color: blue;
+}

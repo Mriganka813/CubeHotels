@@ -14,10 +14,10 @@
 <body>
     <div class="main">
         <div class="update-form">
-            <form action="/update/user" method="post">
+            <form action="/user/update/user" method="post">
                 <div class="input">
                     <label for="hotelName">Name</label>
-                    <input type="text" name="name" id="name" value="<%=name%>">
+                    <input type="text" name="name" id="name" value="<%=user.name%>">
                 </div>
                 <div class="input">
                     <label for="hotelName">Hotel Name</label>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="input">
                     <label for="gst">GST</label>
-                    <input type="number" name="gst" id="gst" value="<%=user.gst%>">
+                    <input type="text" name="gst" id="gst" value="<%=user.gst%>">
                 </div>
                 <div class="input">
                     <label for="name">Image</label>

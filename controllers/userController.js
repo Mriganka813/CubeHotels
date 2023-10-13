@@ -186,7 +186,7 @@ module.exports.updateAccount=async(req,res)=>{
             }
           );
       
-          return res.redirect('back')
+          return res.redirect('/user/account')
         } catch (error) {
           res.status(500).json({ error: 'Error updating user data' });
         }

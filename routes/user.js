@@ -29,4 +29,5 @@ router.get('/delete/type/:id',isAuthenticatedUser,userController.deleteType)
 router.post('/login',userController.login)
 router.get('/account',isAuthenticatedUser,userController.myAccount)
 router.get('/account/edit',isAuthenticatedUser,userController.editAccount)
+router.post('/update/user',isAuthenticatedUser,userController.updateAccount)
 module.exports = router; 

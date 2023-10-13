@@ -8,7 +8,7 @@
     flex-direction: column;
     border: 1px solid black;
     /* padding: 2%; */
-    width: 60vh;
+    width: 80vh;
 }
 .capital{
     text-transform: capitalize;
@@ -65,4 +65,8 @@ table{
 }
 .calculation{
     padding: 1%;
+}
+
+@page {
+    size: auto; /* Set the size to auto to match the content size */
 }

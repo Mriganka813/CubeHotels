@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3;url=/redirect-url"> <!-- Change '/redirect-url' to the actual URL to which you want to redirect -->
+    <title>Oops! Page Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .error-container {
+            margin: 10% auto;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ff3300;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .redirect-info {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Oops! Page Not Found</h1>
+        <p>The page you're looking for does not exist.</p>
+        <p>Redirecting in <span id="countdown">3</span> seconds...</p>
+    </div>
+
+    <script>
+        // JavaScript to update the countdown and perform the redirection
+        let countdown = 3; // Set the initial countdown value
+        const countdownDisplay = document.getElementById('countdown');
+
+        function updateCountdown() {
+            countdown--;
+            countdownDisplay.textContent = countdown;
+
+            if (countdown <= 0) {
+                // Redirect to the specified URL
+                window.location.href = '/'; // Change to the actual URL
+            }
+        }
+
+        // Update the countdown every second (1000 milliseconds)
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

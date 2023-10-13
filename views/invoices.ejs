@@ -8,13 +8,23 @@
     <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/bill.css">
+    <style type="text/css" media="print">
+        @page {
+            size: auto; 
+            margin: 0; /* Remove default margins */
+        }
+        body {
+            margin: 0; /* Remove default body margins */
+        }
 
+        
+    </style>
 </head>
 
 <body>
     <div class="main">
-        <h1>Invoice</h1>
-        <div  class="invoice">
+        <h1>Invoice...</h1>
+        <div id="invoice" class="invoice">
             <div class="invoice-head" style="background-color: rgb(153, 151, 148);">
                 <span>Invoice : <%=guest.bookingId %></span>
                 <span>Date : <%=guest.checkOut%> </span>
@@ -97,22 +107,23 @@
     <div class="button">
 
         <button id="printButton">Print Invoice</button>
+        <!-- <a target="_blank" href="/print/bill/<%=guest._id%>">Print</a> -->
     </div>
     <script>
         document.getElementById('printButton').addEventListener('click', function () {
             // Get the content of the 'invoice' div
             const invoiceContent = document.querySelector('.invoice').outerHTML;
-    
+
             // Create a new window or tab
-            const printWindow = window.open('', '', 'width=600,height=600');
-    
+            const printWindow = window.open('', '', 'width=800,height=600'); // Adjust the width as needed for better A4 layout
+
             // Write the content to the new window/tab
             printWindow.document.open();
             printWindow.document.write('<html><head><title>Print Invoice</title><link rel="stylesheet" href="/css/bill.css"></head><body>');
             printWindow.document.write(invoiceContent);
             printWindow.document.write('</body></html>');
             printWindow.document.close();
-    
+
             // Wait for the content to load, then initiate the print
             printWindow.onload = function () {
                 printWindow.print();
