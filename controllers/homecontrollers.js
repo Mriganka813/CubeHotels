@@ -335,9 +335,11 @@ module.exports.checkout = async (req, res) => {
     const preNet = parseInt(net) + parseInt(adv)
     
     const subTotal = room.price * parseInt(stays)
+    console.log(subTotal);
     const calGst= subTotal * room.gst/100
-    const total = subTotal + calGst - disc + service
-    
+    console.log(calGst);
+    const total = (subTotal + calGst + parseInt(service) )- parseInt(disc) 
+    console.log(total);
     const invoice = new Invoice({
       guestName: guest.guestName,
       guestId: id,
