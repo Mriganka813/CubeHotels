@@ -8,16 +8,18 @@
     <script src="https://kit.fontawesome.com/f324db610c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/f324db610c.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/bill.css">
+    
     <style type="text/css" media="print">
         @page {
-            size: auto; 
-            margin: 0; /* Remove default margins */
-        }
-        body {
-            margin: 0; /* Remove default body margins */
+            size: auto;
+            margin: 0;
+            /* Remove default margins */
         }
 
-        
+        body {
+            margin: 0;
+            /* Remove default body margins */
+        }
     </style>
 </head>
 
@@ -31,35 +33,49 @@
             </div>
             <div class="bill-data">
                 <div class="address from">
-                    
+
                     <div class="data">
                         <span>From</span>
-                        <span class="capital"><%=hotel.name%></span>
+                        <span class="capital">
+                            <%=hotel.hotelName%>
+                        </span>
                         <span>GST : <%=hotel.gst%></span>
                         <span>Address : <%=hotel.address%></span>
                         <span>email : <%=hotel.email%></span>
-                        <span>phone: <%=hotel.email%></span> 
+                        <span>phone: <%=hotel.email%></span>
                         <%if(hotel.gst){%>
-                        <span>GST: <%=hotel.gst%></span>
-                        <%}%>
+                            <span>GST: <%=hotel.gst%></span>
+                            <%}%>
                     </div>
                 </div>
                 <div class="address bill-to">
-                    
+
                     <div class="data">
                         <span>To :</span>
-                        <span class="capital" ><%=guest.guestName%></span>
-                        <span><%=guest.business%></span>
-                        <span><%=guest.address%></span>
-                        <span><%=guest.gst%></span>
-                        <span><%=guest.businessName%></span>
-                        <span><%=guest.guestGst%></span>
+                        <span class="capital">
+                            <%=guest.guestName%>
+                        </span>
+                        <span>
+                            <%=guest.business%>
+                        </span>
+                        <span>
+                            <%=guest.address%>
+                        </span>
+                        <span>
+                            <%=guest.gst%>
+                        </span>
+                        <span>
+                            <%=guest.businessName%>
+                        </span>
+                        <span>
+                            <%=guest.guestGst%>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="dates" style="background-color: rgb(153, 151, 148);">
                 <span>
-                   CheckIn : <%=guest.checkIn%>
+                    CheckIn : <%=guest.checkIn%>
                 </span>
                 <span> CheckOut <%=guest.checkOut%></span>
             </div>
@@ -72,18 +88,28 @@
                         <td class="bold">Price (per night)</td>
                         <td class="bold">GST</td>
                         <td class="bold">Total</td>
-                        
-                    </tr>
-                    <tr>
-                        <td> <%=invoice.roomNum%></td>
-                        <td><%=invoice.stay%></td>
-                        <td><%= invoice.rent %></td>
-                        <td><%=invoice.gst%> ( <%=room.gst%>% ) </td> 
-                        <td><%= (invoice.rent * invoice.stay) %></td>
 
                     </tr>
-                    
-                      
+                    <tr>
+                        <td>
+                            <%=invoice.roomNum%>
+                        </td>
+                        <td>
+                            <%=invoice.stay%>
+                        </td>
+                        <td>
+                            <%= invoice.rent %>
+                        </td>
+                        <td>
+                            <%=invoice.gst%> ( <%=room.gst%>% )
+                        </td>
+                        <td>
+                            <%= (invoice.rent * invoice.stay) %>
+                        </td>
+
+                    </tr>
+
+
                 </table>
                 <hr>
                 <div class="cal">
@@ -92,25 +118,30 @@
                         <table class="cal-table">
                             <tr>
                                 <td>Sub Total</td>
-                                <td>Rs. <%= invoice.rent %></td>
+                                <td>Rs. <%= invoice.rent %>
+                                </td>
                             </tr>
                             <tr>
                                 <td>GST Ammount</td>
-                                <td>Rs. <%=invoice.gst%></td>
+                                <td>Rs. <%=invoice.gst%>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Additional Charges</td>
-                                <td>Rs. <%=invoice.serviceCharge%></td>
+                                <td>Rs. <%=invoice.serviceCharge%>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="dis">Discount</td>
-                                <td class="dis">Rs. <%=invoice.discount%></td>
+                                <td class="dis">Rs. <%=invoice.discount%>
+                                </td>
                             </tr>
-                        
-                            
+
+
                             <tr class="tot">
                                 <td>Net Ammount</td>
-                                <td>Rs. <%= invoice.net %> </td>
+                                <td>Rs. <%= invoice.net %>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -125,9 +156,19 @@
     <div class="button">
 
         <button id="printButton">Print Invoice</button>
+        <!-- <button id="downloadPDFButton">Print</button> -->
         <!-- <a target="_blank" href="/print/bill/<%=guest._id%>">Print</a> -->
     </div>
+
+    
+
+
+
+
+
+    
     <script>
+
         document.getElementById('printButton').addEventListener('click', function () {
             // Get the content of the 'invoice' div
             const invoiceContent = document.querySelector('.invoice').outerHTML;
