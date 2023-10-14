@@ -35,6 +35,8 @@
                 <div class="date">
                     <label for="checkin">CheckIn:</label>
                     <input type="date" id="checkin" name="checkIn" required>
+                    <label for="timeInput">Select a time:</label>
+                    <input type="time" id="timeInput" name="checkInTime">
                 </div>
 
                 <div class="address">
@@ -43,9 +45,13 @@
                 </div>
 
                 <div class="payment">
-                    <input type="text" placeholder="CheckIn Time" name="checkInTime" required>
+                    <!-- <input type="text" placeholder="CheckIn Time" name="checkInTime" required> -->
                     <label for="advPayment">Advance Payment</label>
                     <input type="number" placeholder="Advance Payment" id="advPayment" name="advPayment" value=0>
+                </div>
+                <div class="business">
+                    <input type="text" name="businessName" placeholder="Business Name">
+                    <input type="text" name="guestGst" placeholder="Guest GST">
                 </div>
                 <button type="submit">ADD</button>
             </form>

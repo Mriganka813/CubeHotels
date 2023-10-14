@@ -222,9 +222,11 @@ module.exports.addGuestData = async (req, res) => {
       advPayment,
       nationality,
       checkInTime,
+      businessName,
+      guestGst,
       roomNum,
     } = req.body;
-    
+    console.log(checkInTime);
     let bookingId;
     let isUnique = false;
     
