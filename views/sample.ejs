@@ -69,6 +69,7 @@
                     <tr>
                         <td class="bold"> Room No. </td>
                         <td class="bold">No. of Days</td>
+                        <td class="bold">No. of Guest</td>
                         <td class="bold">Price (per night)</td>
                         <td class="bold">GST</td>
                         <td class="bold">Total</td>
@@ -77,6 +78,7 @@
                     <tr>
                         <td> <%=invoice.roomNum%></td>
                         <td><%=invoice.stay%></td>
+                        <td><%=guest.numberOfGuest%></td>
                         <td><%= invoice.rent %></td>
                         <td><%=invoice.gst%> ( <%=room.gst%>% ) </td> 
                         <td><%= (invoice.rent * invoice.stay) %></td>

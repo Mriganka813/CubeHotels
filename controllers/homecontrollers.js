@@ -361,17 +361,12 @@ module.exports.checkout = async (req, res) => {
     await guest.save()
     // console.log(invoice);
     
-    return res.render('sample', {
+    return res.render('invoices', {
       title: "Invoice",
-      invoice,
-      rent,
-      preNet,
       guest,
+      invoice,
       hotel,
       room,
-      calGst,
-      total,
-      invoice
     })
   }catch(err){
     // console.log(err);
