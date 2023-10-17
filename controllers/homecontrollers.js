@@ -11,6 +11,7 @@ module.exports.home = async function (req, res) {
   try{
     const userId=req.user.userId
     const user = await User.findById(userId)
+    console.log(req.user);
     return res.render('home', {
             title: "home",// Pass the user object to the template
             user
@@ -295,6 +296,88 @@ module.exports.renderCheckInBookings = async (req, res) => {
   })
 }
 
+module.exports.proceedCheckout=async(req,res)=>{
+  try{
+    const {
+      dailyRent,
+      basePrice,
+      discount,
+      serviceCharge,
+      gst,
+      net,
+      night,
+      checkOutDate,
+      checkOutTime,
+      bookingId,
+      gstAmt
+    }=req.body
+
+    const { guestId } = req.params
+    
+    const hotelId = req.user.userId
+    console.log(hotelId);
+    const guest = await Guest.findById(guestId)
+    guest.checkOut = checkOutDate
+    guest.status = 'leave'
+    guest.checkOutTime = checkOutTime
+    await guest.save()
+    console.log(guest);
+    const room = await Rooms.findById(guest.roomId)
+    // console.log(room);
+    // Change Checkout Status
+ 
+    console.log('check');
+    const hotel = await User.findById(hotelId)
+    console.log(hotel);
+    // console.log('check');
+    // Update Room Status
+    room.occupied = false
+    room.guest = null
+    await room.save()
+    await guest.save()
+    
+    const invoice = new Invoice({ 
+      guestName: guest.guestName,
+      guestId: guestId,
+      roomNum: guest.roomNum,
+      roomId: room._id,
+      invoiceId: bookingId,
+      discount: discount,
+      serviceCharge: serviceCharge,
+      checkout: checkOutDate,
+      checlIn: guest.checkIn,
+      gst:gst,
+      net:net,
+      rent:basePrice,
+      dailyRent:dailyRent,
+      stay:night,
+      hotelId,
+      gstAmt,
+    })
+    console.log('saving....');
+    await invoice.save()
+    console.log('saved');
+    guest.invoiceId = invoice._id
+    await guest.save()
+
+    return res.render('invoices', {
+      title: "Invoice",
+      guest,
+      invoice,
+      hotel,
+      room,
+    })
+
+
+  }catch(error){
+    res.send|(error)
+  }
+}
+
+
+
+
+
 // Checkout Logic and  Render Invoice
 module.exports.checkout = async (req, res) => {
   try{
@@ -325,9 +408,9 @@ module.exports.checkout = async (req, res) => {
     const hotel = await User.findById(hotelId)
     
     room.occupied = false
-    await room.save()
     room.guest = null
-  
+    await room.save()
+    
     // console.log(guest);
     
     
@@ -340,7 +423,9 @@ module.exports.checkout = async (req, res) => {
     console.log(calGst);
     const total = (subTotal + calGst + parseInt(service) )- parseInt(disc) 
     console.log(total);
-    const invoice = new Invoice({
+
+
+    const invoice = new Invoice({ 
       guestName: guest.guestName,
       guestId: id,
       roomNum: guest.roomNum,
@@ -407,11 +492,11 @@ module.exports.checkoutPage = async (req, res) => {
 
     const { id } = req.params
     const guest = await Guest.findById(id)
-    console.log(guest);
-    const room = await Rooms.findById(guest.roomId)
-    console.log(room);
     
-    return res.render('checkout', {
+    const room = await Rooms.findById(guest.roomId)
+    
+    
+    return res.render('checkoutPage', {
       title: 'CheckOut',
       guest,
       room

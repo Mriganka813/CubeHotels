@@ -21,7 +21,7 @@ router.get('/room-dash',isAuthenticatedUser,homeController.renderRoomDash)
 router.get('/select/:roomName',isAuthenticatedUser,homeController.select)
 router.get('/checkoutpage/:id',isAuthenticatedUser,homeController.checkoutPage)
 
-router.post('/proceed/:id',isAuthenticatedUser,homeController.checkout)
+router.post('/proceed/:guestId',isAuthenticatedUser,homeController.proceedCheckout)
 router.get('/checkinbookings',isAuthenticatedUser,homeController.renderCheckInBookings)
 
 router.get('/reports',homeController.reportPage)
@@ -40,6 +40,12 @@ router.get('/get/invoices/:guestId',homeController.getInvoice)
 router.get('/error',async(req,res)=>{
     return res.render('errorPage',{
         title: 'ERROR'
+    })
+})
+
+router.get('/checkout-new',async(req,res)=>{
+    return res.render('checkoutPage',{
+        title:'Checkout '
     })
 })
 

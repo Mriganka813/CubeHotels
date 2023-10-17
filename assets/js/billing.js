@@ -1,28 +1,31 @@
 
-const nights = document.getElementById('night')
-const stayDay = document.getElementById('stayDay')
-const basePrice = document.getElementById('baseprice')
-
-function getSubtotal(){
-    console.log('check');
-    const stay = document.getElementById('stayDay')
-    const price = parseInt(document.getElementById('priceNight').value)
-    const basePrice = document.getElementById('baseprice')
+function updateNet(){
+    const netAmount = document.getElementById('net')
+    const gstPercent = parseInt(document.getElementById('gst').value)
+    const discount = parseInt(document.getElementById('discount').value)
+    const advance = parseInt(document.getElementById('advance').value)
+    const additional = parseInt(document.getElementById('additional').value)
     const day = parseInt(document.getElementById('night').value)
-    
-    basePrice.value = price * day
-    stay.value = day
+    const price = parseInt(document.getElementById('priceNight').value)
+    const gstAmt = document.getElementById('gstAmt')
+    const totalPrice = day * price
+    const gstAmmount = totalPrice * gstPercent/100
+
+    const net = (totalPrice + gstAmmount + additional)- advance - discount
+    gstAmt.value=gstAmmount
+    netAmount.value = net
 }
 
 // Get the Check-Out date input element
 function countDays() {
     let diff = 0
+    const stayDay = document.getElementById('stayDay')
     const basePrice = document.getElementById('baseprice')
     const price = parseInt(document.getElementById('priceNight').value)
     const checkOutInput = document.getElementById('checkOutDate').value;
     const checkInDate = document.getElementById('checkInDate').innerText
     const cout = document.getElementById('cout')
-
+    const nights = document.getElementById('night')
     if (checkOutInput && checkInDate) {
         const checkOutDateObj = new Date(checkOutInput);
         const checkInDateObj = new Date(checkInDate);
@@ -32,59 +35,43 @@ function countDays() {
 
         console.log(`Number of days difference: ${daysDifference}`);
         nights.value = daysDifference
-        stayDay.value = daysDifference
+        
         diff = daysDifference
-        cout.value = checkInDate
 
     }
     // console.log(price);
+
+    // update Base Priec
     const day = parseInt(document.getElementById('night').value)
     const totalPrice = day * price
     console.log(totalPrice);
     basePrice.value = totalPrice
+
+    // Update Total NET after GST
+    updateNet()
 }
 
-function addDiscount() {
-
-    const disc = document.getElementById('discount').value
-    const setDisc = document.getElementById('disc')
-    setDisc.value = disc
-}
-
-function addServiceCharges() {
-
-    const charge = document.getElementById('charge').value
-    const setCharge = document.getElementById('service')
-    setCharge.value = charge
-}
-
-function checkinTime(){
-    const time = document.getElementById('cinTime').value
-    const setTime = document.getElementById('setTime')
-
-    setTime.value = time
-}
-
-function calculateNet() {
-    // console.log('cc');
-    const price = parseInt(document.getElementById('priceNight').value);
-    const day = parseInt(document.getElementById('night').value);
+function changeTotalDays(){
+    const totalDays = parseInt(document.getElementById('night').value)
+    const price = parseInt(document.getElementById('priceNight').value)
     const basePrice = document.getElementById('baseprice')
-    const discount = parseInt(document.getElementById('disc').value);
-    const advance = parseInt(document.getElementById('advance').value);
-    const charge = parseInt(document.getElementById('service').value);
-    const gst = parseFloat(document.getElementById('gst').value);
+    const newbasePrice = totalDays * price
+    basePrice.value = newbasePrice
+    updateNet()
     
-    const rent = price * day
-    basePrice.value = rent
-    const gstAmt = (rent) * gst/100
+}
 
-    console.log(typeof (rent) , "rent");
-    const netPrice = document.getElementById('net')
-    const net = (rent + charge + gstAmt ) - advance - discount
-    console.log(net);
-    netPrice.value = net
-   
-    
+function calculateGstPercentage() {
+    // Get the elements and their values
+    const gstAmount = parseFloat(document.getElementById('gstAmt').value);
+    const basePrice = parseFloat(document.getElementById('baseprice').value);
+
+    // Calculate the GST percentage
+    const gstPercentage = (gstAmount / basePrice) * 100;
+
+    // Update the GST percentage field with the calculated value
+    document.getElementById('gst').value = parseInt(gstPercentage.toFixed(2)); // Round to 2 decimal places
+    updateNet()
 
 }
+

@@ -48,12 +48,18 @@ const invoiceSchema = mongoose.Schema({
     rent:{
         type:Number
     },
+    dailyRent:{
+        type:Number
+    },
     stay:{
         type:Number //No. Of days 
     },
     hotelId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    gstAmt:{
+        type:Number
     }
    },
     {
