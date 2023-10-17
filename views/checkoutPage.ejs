@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/checkoutPage.css">
 </head>
+
 <body>
     <div class="main">
         <div class="checkout">
@@ -20,23 +22,30 @@
                     </div>
 
                     <div class="block-2">
-                        <p><%=guest.guestName %></p>
-                        <p id="">CheckIn: <p id="checkInDate"><%=guest.checkIn %></p>
+                        <p>
+                            <%=guest.guestName %>
+                        </p>
+                        <p id="">CheckIn:
+                        <p id="checkInDate">
+                            <%=guest.checkIn %>
+                        </p>
                         </p>
                     </div>
 
                     <div class="block-3">
                         <div class="date">
                             <label for="cinTime">CheckOut</label>
-                            <input class="inpt" type="time" onchange="checkinTime()" id="cinTime" name="checkOutTime" placeholder="checkout Time">
+                            <input class="inpt" type="time" onchange="checkinTime()" id="cinTime" name="checkOutTime"
+                                placeholder="checkout Time">
                         </div>
                         <div class="date">
                             <label for="checkOutDate">CheckOut Date</label>
-                            <input class="inpt" type="date" onchange="countDays();" name="checkOutDate" id="checkOutDate">
+                            <input class="inpt" type="date" onchange="countDays();" name="checkOutDate"
+                                id="checkOutDate">
                         </div>
                         <div class="date">
                             <label for="night">Total Nights</label>
-                            <input  class="inpt" onchange="changeTotalDays()" type="number" name="night" id="night">
+                            <input class="inpt" onchange="changeTotalDays()" type="number" name="night" id="night">
                         </div>
                     </div>
                     <div class="block">
@@ -50,30 +59,38 @@
                         </div>
                     </div>
                     <div class="block-2">
-                        
+
                         <div class="input">
                             <label for="gst">GST %</label>
-                            <input type="number" id="gst" onchange="updateNet()"  name="gst" value=<%=room.gst%>>
-                            
+                            <input type="number" id="gst" onchange="updateNet()" name="gst" value=<%=room.gst%>>
+
                         </div>
-                        
+
                         <div class="input">
                             <label for="gst">GST Ammount</label>
-                            <input type="number" id="gstAmt" onchange=" calculateGstPercentage();"  name="gstAmt">
+                            <input type="number" id="gstAmt" onchange=" calculateGstPercentage();" name="gstAmt">
                         </div>
                     </div>
                     <div class="bloc-disc">
                         <div class="input">
                             <label for="discount">Discount Ammount</label>
                             <input type="number" onchange="updateNet()" id="discount" name="discount" value=0>
-                            
+
                         </div>
                     </div>
                     <div class="block">
                         <label for="advance">Advance payment</label>
-                        <input type="number" onchange="updateNet()" id="advance" name="advance" value=<%=guest.advPayment%>>
+                        <input type="number" onchange="updateNet()" id="advance" name="advance"
+                            value=<%=guest.advPayment%>>
                     </div>
-
+                    <div class="payment-mode">
+                        <label for="payment-select">Select Payment Mode:</label>
+                        <select id="payment-select" name="paymentMode">
+                            <option value="cash">Cash</option>
+                            <option value="upi">UPI</option>
+                            <option value="card">Card</option>
+                        </select>
+                    </div>
                     <div class="net">
                         <label for="">NET Ammount</label>
                         <input type="number" id="net" name="net" readonly>
@@ -87,4 +104,5 @@
     </div>
     <script src="/js/billing.js"></script>
 </body>
+
 </html>

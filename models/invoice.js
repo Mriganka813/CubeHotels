@@ -60,6 +60,9 @@ const invoiceSchema = mongoose.Schema({
     },
     gstAmt:{
         type:Number
+    },
+    paymentMode:{
+        type:String
     }
    },
     {

@@ -37,6 +37,9 @@ const userSchema = mongoose.Schema({
         type:Boolean,
         default: false
     },
+    advPaymentMode:{
+        type: String
+    }
     
 
    },

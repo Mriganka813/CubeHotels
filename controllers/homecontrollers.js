@@ -226,6 +226,7 @@ module.exports.addGuestData = async (req, res) => {
       businessName,
       guestGst,
       roomNum,
+      advPaymentMode,
     } = req.body;
     console.log(checkInTime);
     let bookingId;
@@ -309,7 +310,8 @@ module.exports.proceedCheckout=async(req,res)=>{
       checkOutDate,
       checkOutTime,
       bookingId,
-      gstAmt
+      gstAmt,
+      paymentMode,
     }=req.body
 
     const { guestId } = req.params
@@ -353,6 +355,7 @@ module.exports.proceedCheckout=async(req,res)=>{
       stay:night,
       hotelId,
       gstAmt,
+      paymentMode
     })
     console.log('saving....');
     await invoice.save()

@@ -18,16 +18,19 @@
             <form action="/book-room/<%=room.roomNum%>" method="post">
                 <input type="text" class="rnum" placeholder="Room" name="roomNum" readonly value="<%=room.roomNum%>">
                 <div class="basic">
-                    <input type="text" placeholder="Name of guest" onchange="guestNames()" id="guest" name="guestName" required>
+                    <input type="text" placeholder="Name of guest" onchange="guestNames()" id="guest" name="guestName"
+                        required>
                     <input type="number" placeholder="Number" name="phNumber" required>
                 </div>
                 <label for="allGuest">All Guest Name:</label>
-                <textarea name="allGuest"class="all-guest"  placeholder="All guests Names" id="allGuest" cols="30"
+                <textarea name="allGuest" class="all-guest" placeholder="All guests Names" id="allGuest" cols="30"
                     rows="5"></textarea>
                 <div class="num-guest">
                     <div class="type">
-                        <input type="number" id="child" onchange="catchTotal()" placeholder="Childern" name="childern" required>
-                        <input type="number" id="adult" onchange="catchTotal()" placeholder="adults" name="adults" required>
+                        <input type="number" id="child" onchange="catchTotal()" placeholder="Childern" name="childern"
+                            required>
+                        <input type="number" id="adult" onchange="catchTotal()" placeholder="adults" name="adults"
+                            required>
                     </div>
                     <input type="number" id="total" placeholder="Total" name="numberOfGuest" required>
 
@@ -40,14 +43,23 @@
                 </div>
 
                 <div class="address">
-                    
-                    <textarea name="address" class="address-bar" placeholder="address" cols="30" rows="5" required></textarea>
+
+                    <textarea name="address" class="address-bar" placeholder="address" cols="30" rows="5"
+                        required></textarea>
                 </div>
 
                 <div class="payment">
                     <!-- <input type="text" placeholder="CheckIn Time" name="checkInTime" required> -->
                     <label for="advPayment">Advance Payment</label>
                     <input type="number" placeholder="Advance Payment" id="advPayment" name="advPayment" value=0>
+                </div>
+                <div class="payment-mode">
+                    <label for="payment-select">Select Payment Mode:</label>
+                    <select id="payment-select" name="advPaymentMode">
+                        <option value="cash">Cash</option>
+                        <option value="upi">UPI</option>
+                        <option value="card">Card</option>
+                    </select>
                 </div>
                 <div class="business">
                     <input type="text" name="businessName" placeholder="Business Name">
@@ -59,22 +71,22 @@
     </div>
 
     <script>
-       function catchTotal(){
-        const child = parseInt(document.getElementById('child').value)
-        const adult = parseInt(document.getElementById('adult').value)
-        const total=document.getElementById('total')
-        const setTotal = child + adult
+        function catchTotal() {
+            const child = parseInt(document.getElementById('child').value)
+            const adult = parseInt(document.getElementById('adult').value)
+            const total = document.getElementById('total')
+            const setTotal = child + adult
 
-        total.value=setTotal
+            total.value = setTotal
 
-       }
+        }
 
-       function guestNames() {
-    const guest = document.getElementById('guest').value;
-    const allGuest = document.getElementById('allGuest');
+        function guestNames() {
+            const guest = document.getElementById('guest').value;
+            const allGuest = document.getElementById('allGuest');
 
-    allGuest.textContent += guest + '\n';
-}
+            allGuest.textContent += guest + '\n';
+        }
 
     </script>
 </body>
