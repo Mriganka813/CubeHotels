@@ -18,7 +18,7 @@
 
  .dash-head{
     display: flex;
-    color: gray;
+    color: rgb(62, 62, 62);
     width: 90%;
     height: 10vh;
     align-items: center;
@@ -26,6 +26,7 @@
     justify-content: space-between;
     padding-left: 5%;
     padding-right: 10%;
+    
  }
 
 .dash{
@@ -40,7 +41,7 @@
     justify-content: space-evenly;
     width: 80%;
     flex-direction: column;
-    /* background-color: aquamarine; */
+    /* background-color: aquamarine;  */
     height: 80vh;
     padding: 2%;
 }
@@ -73,7 +74,9 @@
     height: 100%;
     width: 100%;
     /* background-color: aqua; */
-    color: gray;
+    color: #808080;
+    background-color: whitesmoke;
+    justify-content: space-evenly;
 }
 .link-btn h1{
     width: min-content;
@@ -93,6 +96,29 @@
     height: 100%;
     width: 100%;
 }
+/* #book-now{   
+    background-color: rgb(249, 238, 238);
+    margin-right: 0px;
+    width: 100%;
+} 
+#chekin{
+    background-color: aqua;
+    margin-left: 10px;
+    width: 100%;
+}
+#bookings{
+     margin: 250px  600px 0px 0px; 
+    background-color: blueviolet;
+    width: 100%;
+}
+#category{
+    background-color: greenyellow;
+    margin-right: 650px;
+    width: 20%;
+}
+#reports{
+    background-color: palevioletred;
+}
 /* .bg{
     background-color: aqua;
-} */
+} **/

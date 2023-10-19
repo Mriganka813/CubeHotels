@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #fff;
   }
   
   /* Container for the login form */
@@ -16,13 +16,14 @@ body {
   
   /* Login form styles */
   .login {
-    background-color: #ffffff;
+    background-color: aliceblue;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 400px;
     text-align: center;
+    height: 300px;
   }
   
   .login form {
@@ -33,23 +34,26 @@ body {
   
   .login input {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #110101;
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #f0f8ff;
+    font-weight: 700;
   }
   
   .login button {
-    background-color: #007bff;
+    background-color:#5332e3;
     color: #fff;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 700;
     transition: background-color 0.3s;
   }
   
   .login button:hover {
     background-color: #0056b3;
-  }
+    }
   
