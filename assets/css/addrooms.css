@@ -39,14 +39,27 @@
     width: 15%;
 }
 #btn{
-    background-color: lime;
+    background-color: #1af21a;
     width: 8%;
-    border: none;
+    border: none;border-radius: 10px;
 }
-
-
-
-
+#btn:hover{
+    background-color: #046c04;
+    color: aliceblue;
+    font-weight: 900;
+}
+.rooms label{
+    font-weight: 700;
+}
+.rooms select{
+    border-radius: 6px;
+    font-weight: 590;
+}
+input{
+    border-radius: 6px;
+    border: 1px solid black;
+    font-weight: 600;
+}
 .added-rooms{
     /* background-color: rgb(107, 218, 181); */
     height: 70vh;
@@ -136,7 +149,6 @@ table{
     width: 100%;
     
 }
-
 table,tr,th,td{
     border: 1px solid black;
 }

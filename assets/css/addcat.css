@@ -71,14 +71,20 @@
   }
   .add-rooms{
     color: whitesmoke;
-   background-color: #007bff;
-   border-radius: 4px;
+   background-color: #5F6FFF;
+   font-family: Inter;
+   border-radius: 8px;
    border: none;
    text-align: center;
-   font-size: 0.8rem;
+   font-size: 1rem;
+   height: 33%;
+   width: 34%;
+  text-transform: capitalize;
+  margin-left: 12%;
+
   }
   .add-rooms:hover{
-    background-color:#0056b3 ;
+    background-color:#053003 ;
   }
   
   .cat{
