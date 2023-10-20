@@ -8,6 +8,7 @@ router.get('/', isAuthenticatedUser, homeController.home);
 // Add Rooms
 router.get('/addrooms',isAuthenticatedUser,homeController.renderAddRoom)
 router.get('/add-guest/:roomId',isAuthenticatedUser,homeController.addGuest)
+router.get('/addrooms-cat/:roomTypeId',isAuthenticatedUser,homeController.addRoomCat)
 
 router.post('/book-room/:roomNum',isAuthenticatedUser,homeController.addGuestData)
 router.get('/bookings',isAuthenticatedUser,homeController.renderBookings)

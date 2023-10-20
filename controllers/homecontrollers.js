@@ -142,6 +142,34 @@ module.exports.addRoom = async (req, res) => {
   }
 }
 
+module.exports.addRoomCat=async(req,res)=>{
+  try {
+    const userId = req.user.userId;
+    const {roomTypeId} = req.params
+    const page = req.query.page || 1; // Get the current page from the query string or default to 1.
+    const perPage = process.env.PAGE_COUNT; // Number of rooms per page.
+    
+    const rooms = await Rooms.find({ owner: userId })
+      .skip((page - 1) * perPage) // Skip the rooms on previous pages.
+      .limit(perPage) // Limit the number of rooms on the current page.
+      
+    const totalRooms = await Rooms.countDocuments({ owner: userId });
+    const totalPages = Math.ceil(totalRooms / perPage);
+    
+    const Category = await RoomTypes.findById(roomTypeId);
+    
+    res.render('addCatRoom', {
+      title: "Add",
+      rooms,
+      Category,
+      currentPage: page,
+      totalPages
+    });
+  } catch (err) {
+    res.send(err);
+  }
+}
+
 // Delete Room
 module.exports.deleteRoom= async(req,res)=>{
   try{

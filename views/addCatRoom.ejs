@@ -22,11 +22,11 @@
                         <label for="roomType">Select Room Type</label>
 
                         <select name="roomType">
-                            <% for(let cat of Category) {%>
-                                <option name="rs" value="<%= cat.roomType%>">
-                                    <%= cat.roomType%>
+                           
+                                <option name="rs" value="<%= Category.roomType%>">
+                                    <%= Category.roomType%>
                                 </option>
-                                <%}%>
+                               
                         </select>
                         <input type="text" name="roomNum" id="" placeholder="roomNum" required>
                         <input type="number" name="price" placeholder="Price per Night" id="" required>
@@ -64,7 +64,7 @@
                     <% }); %>
                 </table>
 
-               
+                
                   
                   <!-- Pagination controls -->
                   <div class="pagination">
