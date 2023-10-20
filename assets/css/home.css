@@ -46,31 +46,35 @@ body{
 .blocks {
     display: flex;
     justify-content: space-evenly;
-    width: 80%;
-    flex-direction: column;
+    width: 90%;
     /* background-color: aquamarine;  */
     height: 80vh;
     padding: 2%;
+    /* border: 2px solid black; */
 
 }
 
-.cols{
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    height: 50%;
-
-}
-
-.cols a{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 23%;
-    height: 90%;
+.cols-block{
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* background-color: aqua; */
+    /* border: 1px solid black; */
+    justify-content: space-evenly;
     align-items: center;
-    font-weight: bold;
+    width: 70vh;
+}
+
+.cols-block a{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 40%;
+    height: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    /* background-color: #b80404; */
 }
 .cols a:hover{
     box-shadow: rgba(31, 130, 223, 0.473) 0px 5px 15px;
@@ -82,10 +86,7 @@ body{
     align-items: center;
     height: 100%;
     width: 100%;
-    /* background-color: aqua; */
-    /* color: #808080;
-    background-color: whitesmoke;
-    justify-content: space-evenly; */
+   
     color: #808080;
      border-radius: 12px;
      background: #FFF;
@@ -94,7 +95,7 @@ body{
 }
 .link-btn h1{
     width: min-content;
-    font-size: 2rem;
+    /* font-size: 0.5rem; */
 
 }
 .signout, .account{
@@ -111,7 +112,15 @@ body{
     height: 100%;
     width: 100%;
 }
-#book-now{   
+#reports{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* #book-now{   
     width: 260px;
     height: 260px;
     flex-shrink: 0;
@@ -151,7 +160,7 @@ body{
     border-radius: 12px;
     background: #FFF;
     box-shadow: 2px 6px 4px 0px rgba(0, 0, 0, 0.25);}
-    
+     */
 /* .bg{
     background-color: aqua;
 } **/

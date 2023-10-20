@@ -361,6 +361,7 @@ module.exports.proceedCheckout=async(req,res)=>{
     await invoice.save()
     console.log('saved');
     guest.invoiceId = invoice._id
+    guest.paymentMode = paymentMode
     await guest.save()
 
     return res.render('invoices', {
@@ -627,6 +628,7 @@ module.exports.getReport = async (req, res) => {
       { header: 'Service Charge', key: 'serviceCharge' },
       { header: 'Net Amount', key: 'net' },
       { header: 'Address', key: 'address' },
+      { header: 'Payment Mode', key: 'paymentMode' },
       // Add more headers as needed
     ];
 
@@ -647,8 +649,9 @@ module.exports.getReport = async (req, res) => {
         discount: report.discount,
         serviceCharge: report.serviceCharge,
         gst: report.gst,
-        net: report.net,
-        address:report.address
+        net: report.net, // change net from invoice
+        address:report.address,
+        paymentMode:report.paymentMode
         // Add more data columns as needed
       });
     }

@@ -95,6 +95,15 @@ const guestSchema = mongoose.Schema({
     },
     guestGst:{
         type:String
+    },
+    net:{
+        type:Number
+    },
+    advPaymentMode:{
+        type: String
+    },
+    paymentMode:{
+        type:Number
     }
    },
     {
