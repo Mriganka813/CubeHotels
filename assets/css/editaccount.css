@@ -19,17 +19,21 @@
 .input input{
     border-radius: 5px;
     height: 5vh;
-    border: 1px solid black;
+    border: 1px solid #c3c2c2;
     background-color: rgba(128, 128, 128, 0.151);
 }
 
 .btn-update{
     margin-top: 2%;
-    background-color: rgb(57, 255, 57);
+    background-color: #5f6fff;
     border: none;
     padding: 1%;
     padding-left: 5%;
     padding-right: 5%;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;    
-
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;   
+    color: #f0f8ff; 
+    border-radius: 5px;
+}
+.btn-update:hover{
+    background-color: #0056b3;
 }

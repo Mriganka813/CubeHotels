@@ -13,6 +13,7 @@
   body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+
   }
   
   /* Container for the form */
@@ -20,12 +21,14 @@
     color: gray;
     display: flex;
     justify-content: center;
+  
     }
   
   .room-data{
     display: flex;
     flex-direction: column;
     width: 90%;
+    height: 100%;
     align-items: center;
     justify-content: space-between;
     /* background-color: aquamarine; */
@@ -58,7 +61,7 @@
   }
   
   .rooms button {
-    background-color: #007bff;
+    background-color: #5F6FFF;
     color: #fff;
     padding: 10px;
     border: none;
@@ -84,7 +87,7 @@
 
   }
   .add-rooms:hover{
-    background-color:#053003 ;
+    background-color: #0056b3;
   }
   
   .cat{
