@@ -7,7 +7,7 @@
     font-weight: bold;
     color: grey;
 }
-header h2{
+ h2{
     color: #999;
     font-family: Inter;
     font-size: 35px;
@@ -33,6 +33,7 @@ h1{
     margin: 0%;
     padding: 0%;
 }
+
 .bookings{
     width: 70%;
     display: flex;

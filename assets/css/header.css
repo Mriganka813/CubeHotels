@@ -4,6 +4,11 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
 }
+header{
+    /* background-color: black; */
+    background-color: rgb(11, 176, 232);
+
+}
 
 a {
     text-decoration: none;
@@ -12,10 +17,10 @@ a {
 
 /* Apply styles to the container */
 .container {
-    background-color: rgb(11, 176, 232);
+    /* background-color: rgb(11, 176, 232); */
     padding: 10px 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 0.5%;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+    /* margin-top: 0.5%; */
     color: #f0f8ff;
     font-weight: 800;
 }
