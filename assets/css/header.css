@@ -47,6 +47,9 @@ a {
 }
 
 /* Style the navigation links */
+.links{
+    margin-left: 75%;
+}
 .links a {
     margin-left: 20px;
     font-size: 18px;
@@ -76,3 +79,4 @@ a {
         display: none;
     }
 }
+

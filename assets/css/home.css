@@ -129,6 +129,9 @@ box-shadow: 2px 6px 4px 0px rgba(0, 0, 0, 0.25);
 font-weight: 100;
 font-size: 1.5rem;
 }
+#reports img{
+    filter: invert(39%) sepia(56%) saturate(2211%) hue-rotate(219deg) brightness(99%) contrast(104%);
+}
 #book-now{   
     border-radius: 12px;
     background: #FFF;
@@ -169,3 +172,50 @@ font-size: 1.5rem;
 /* .bg{
     background-color: aqua;
 } **/
+
+
+        /* Media query for smartphones and smaller screens */
+        /* @media (max-width: 769px) {
+            .dash-head {
+                padding: 10px;
+            }
+
+            .account, .signout {
+                width: 30px;
+                height: 30px;
+            }
+
+            .link-btn p {
+                font-size: 0.81rem;
+            }
+            .cols-block{
+                display: flex;
+                flex-direction:column;
+                height:50%;
+                flex-wrap:nowrap wrap;
+                flex: 1;
+                row-gap: 15%;
+            }
+            .cols-block img{
+                height: 20%;
+            }
+           .report-btn{
+            font-size: 0.81rem;
+           }
+        } */
+         /* Media query for smartphones and smaller screens */
+         /* @media (max-width: 769px) {
+            .cols-block{
+                display: flex;
+                flex-direction:column;
+                height:50%;
+                width: 100%;
+                flex-wrap:nowrap;
+                flex: 1;
+                row-gap: 15%;
+                margin-top: 10%;
+            }
+            .link-btn p{
+                font-size: 0.80rem;
+            }
+         } */
