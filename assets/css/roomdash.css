@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 
-.main{
+.main {
     padding: 2%;
     display: flex;
     align-items: center;
@@ -14,6 +14,7 @@ body {
     /* align-items: center; */
 
 }
+
 h1 {
     text-align: center;
     margin-top: 2%;
@@ -24,21 +25,25 @@ h1 {
 
 
 
-.vertical{
+.vertical {
     display: flex;
     flex-direction: column;
     width: 70%;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
     margin: 10px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
+    /* background-color: #f2f2f2; */
+    /* border-radius: 10px; */
     padding: 20px;
+    border-radius: 12px;
+    background: #FFF;
+    box-shadow: 2px 6px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
 /* Style each room type */
 .room-type {
     display: flex;
-    
+
     /* align-items: center; */
     /* flex-direction: column; */
     justify-content: space-between;
@@ -48,39 +53,43 @@ h1 {
 
 }
 
-.room-num{
+.room-num {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-top: 2%;
 }
-.data{
+
+.data {
     width: 90%;
     display: flex;
 }
 
-.room-book{
+.room-book {
     font-size: 18px;
     padding: 10px;
     margin: 5px;
-    border-radius: 18px;
+    border-radius: 10px;
     background-color: #2EB85D;
-    color: #ffffff;
-    /* width: 127px;
-    height: 45px; */
+    color: #f2f2f2;
+    width: 110px;
+    height: 43px;
     padding-left: 20px;
     padding-right: 20px;
     flex-shrink: 0;
     text-align: center;
     font-weight: bold;
 }
-.occupied{
+
+.occupied {
     background-color: #B82E2E;
     color: #f2f2f2;
+    width: 110px;
+    height: 43px;
     font-size: 18px;
     padding: 10px;
     margin: 5px;
-    border-radius: 18px;
+    border-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
     flex-shrink: 0;
@@ -89,6 +98,7 @@ h1 {
     cursor: not-allowed;
 
 }
+
 .room-type h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -106,19 +116,20 @@ h1 {
     font-weight: 700;
 }
 
-.rooms{
+.rooms {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
 }
-.details{
+
+.details {
     display: flex;
     flex-direction: column;
 }
 
-.select{
+/* .select{
     background-color: #37eb91;
     padding: 0.5%;
     padding-left: 2%;
@@ -128,7 +139,7 @@ h1 {
     text-decoration: none;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+} */
 
 /* Apply responsive styles using media queries */
 @media screen and (max-width: 768px) {
