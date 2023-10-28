@@ -18,7 +18,7 @@ body{
 *{
     padding: 0%;
     margin: 0%;
-    font-family: 'Roboto', sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     
  }
 
@@ -174,48 +174,40 @@ font-size: 1.5rem;
 } **/
 
 
-        /* Media query for smartphones and smaller screens */
-        /* @media (max-width: 769px) {
-            .dash-head {
-                padding: 10px;
-            }
-
-            .account, .signout {
-                width: 30px;
-                height: 30px;
-            }
-
-            .link-btn p {
-                font-size: 0.81rem;
-            }
-            .cols-block{
-                display: flex;
-                flex-direction:column;
-                height:50%;
-                flex-wrap:nowrap wrap;
-                flex: 1;
-                row-gap: 15%;
-            }
-            .cols-block img{
-                height: 20%;
-            }
-           .report-btn{
-            font-size: 0.81rem;
-           }
-        } */
          /* Media query for smartphones and smaller screens */
-         /* @media (max-width: 769px) {
-            .cols-block{
+         @media (max-width: 768px) {
+            .block-1,#book-now,#chekin,#bookings,#category{
                 display: flex;
                 flex-direction:column;
-                height:50%;
-                width: 100%;
-                flex-wrap:nowrap;
-                flex: 1;
+                height:40%;
+                width:100%;
+                flex-wrap:wrap;
+                /* flex: 1; */
                 row-gap: 15%;
-                margin-top: 10%;
+                /* margin-top: 10%; */
+                margin-left: 13%;
+                justify-content: space-evenly;
             }
             .link-btn p{
                 font-size: 0.80rem;
             }
-         } */
+           .blocks-2,#reports{
+            /* background-color: aquamarine; */
+            display:flex;
+            margin-top: 12vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            margin-left: -84%;
+            height: 20%;
+            font-size: 0.80rem;
+            width: 100%;
+           }
+           #reports img{
+            height: 31%;
+            justify-content: center;
+            align-items: center;
+           }
+           
+           
+         }

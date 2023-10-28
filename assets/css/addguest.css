@@ -10,14 +10,23 @@
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     min-height: 100vh;
   }
   .rnum{
     background-color: gray;
+  }
+  /* main container */
+  .main{
+    min-height: 10vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
   
   /* Form container */
@@ -33,10 +42,14 @@
     padding: 3%;
     margin-top: 5%;
   }
+ 
 
   .form{
     margin-top: 2%;
     padding: 2%;
+    /* justify-content: center;
+    align-items: center;
+    display: flex; */
   }
   
   /* Form elements */
@@ -54,7 +67,7 @@
   
   /* Button style */
   .form button {
-    background-color: #007bff;
+    background-color:#5F6FFF;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -66,12 +79,12 @@
   }
   
   .form button:hover {
-    background-color: #0056b3;
+    background-color:#0056b3;
   }
   
   /* Responsive styles */
   @media (max-width: 600px) {
-    /* Adjust form width for smaller screens */
+    Adjust form width for smaller screens
     .main-section {
       width: 100%;
     }
