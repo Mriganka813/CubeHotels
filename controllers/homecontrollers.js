@@ -79,6 +79,8 @@ module.exports.renderRoomDash = async (req, res) => {
 
     // Create an array to store available room counts for each category
     const availableRoomCounts = [];
+    // const roomdata =[]
+    const roomdata = await Rooms.find({owner:userId})
 
     // Loop through each room category and count available rooms
     for (const category of roomCat) {
@@ -89,12 +91,14 @@ module.exports.renderRoomDash = async (req, res) => {
       });
 
       availableRoomCounts.push(availableRoomsCount);
+      
     }
-
+    console.log(roomdata);
     res.render('roomdash', {
       title: 'Rooms Dashboard',
       roomCat,
       availableRoomCounts,
+      roomdata
     });
   } catch (err) {
     res.send(err);

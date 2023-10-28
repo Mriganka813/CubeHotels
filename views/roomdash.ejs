@@ -2,41 +2,63 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/roomdash.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/roomdash.css">
+  <title>Document</title>
 </head>
 
 <body>
 
-    <h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%; ">Rooms
-    </h1>
+  <h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%; ">Rooms
+  </h1>
 
-    <div class="main">
-        <div class="rooms">
-          <% for (let i = 0; i < roomCat.length; i++) { %>
-            <div class="room-type <%= roomCat[i].roomType %>">
+  <div class="main">
+    <div class="rooms">
+      <% for (let i=0; i < roomCat.length; i++) { %>
+        <div class="vertical">
 
-              <div class="details">
-                <h2><%= roomCat[i].roomType %></h2>
+
+          <div class="room-type <%= roomCat[i].roomType %>">
+
+            <div class="details">
+              <h2>
+                <%= roomCat[i].roomType %>
+              </h2>
               <p>
                 Available:
-                <% if (availableRoomCounts[i] !== undefined) { %>
+                <% if (availableRoomCounts[i] !==undefined) { %>
                   <%= availableRoomCounts[i] %>
-                <% } else { %>
-                  0
-                <% } %>
+                    <% } else { %>
+                      0
+                      <% } %>
               </p>
-              <p>Total: <%= roomCat[i].total %></p>
-              </div>
-              <a class="select" href="/select/<%= roomCat[i]._id %>">Select</a>
+              <p>Total: <%= roomCat[i].total %>
+              </p>
             </div>
-          <% } %>
+            <a class="select" href="/select/<%= roomCat[i]._id %>">Select</a>
+
+
+          </div>
+          <div class="room-num">
+            <div class="data">
+              <% for(let rooms of roomdata) {%>
+                <%if(rooms.roomType==roomCat[i].roomType){%>
+                  <% if (rooms.occupied) { %>
+                    <p  style="background-color: rgb(250, 112, 112);" class="occupied"><%= rooms.roomNum %> </p>
+                    <% } else { %>
+                        <a class="room-book" href="/add-guest/<%= rooms._id %>"><%= rooms.roomNum %>  </a>
+                <% } %>
+                  <%}%>
+                    <%}%>
+            </div>
+          </div>
         </div>
-      </div>
-      
+        <% } %>
+    </div>
+  </div>
+
 
 </body>
 

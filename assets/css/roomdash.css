@@ -8,6 +8,7 @@ body {
 .main{
     padding: 2%;
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 100%;
     /* align-items: center; */
@@ -23,22 +24,71 @@ h1 {
 
 
 
-
+.vertical{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+}
 /* Style each room type */
 .room-type {
     display: flex;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    margin: 10px;
-    align-items: center;
+    
+    /* align-items: center; */
+    /* flex-direction: column; */
     justify-content: space-between;
-    width: 70%;
+    width: 100%;
     color: rgb(123, 121, 121);
     font-weight: 700;
+
 }
 
+.room-num{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2%;
+}
+.data{
+    width: 90%;
+    display: flex;
+}
+
+.room-book{
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 18px;
+    background-color: #2EB85D;
+    color: #ffffff;
+    /* width: 127px;
+    height: 45px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-shrink: 0;
+    text-align: center;
+    font-weight: bold;
+}
+.occupied{
+    background-color: #B82E2E;
+    color: #f2f2f2;
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-shrink: 0;
+    text-align: center;
+    font-weight: bold;
+    cursor: not-allowed;
+
+}
 .room-type h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -73,6 +123,7 @@ h1 {
     padding: 0.5%;
     padding-left: 2%;
     padding-right: 2%;
+    height: min-content;
     color: white;
     text-decoration: none;
     border-radius: 20px;

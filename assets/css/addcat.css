@@ -9,6 +9,19 @@
     font-family: 'Roboto', sans-serif;
   }
   
+  /* Add this CSS to your existing styles or in a separate CSS file */
+#popupForm {
+  display: none;
+  
+}
+
+.popup-form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #5F6FFF;  */
+}
   /* Global styles */
   body {
     font-family: Arial, sans-serif;
@@ -20,7 +33,9 @@
   .main {
     color: gray;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
   
     }
   
@@ -44,6 +59,7 @@
     text-align: center;
     margin-bottom: 2%;
     margin-top: 2%;
+
   }
   
   .rooms form {
@@ -95,18 +111,38 @@
     width: 90%;
     margin-top: 2%;
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
   }
 
   .room-type{
-    width: 20%;
     margin: 1%;
+    margin: 2%;
+    width: 20%;
     height: 10vh;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-transform: uppercase;
+  }
+
+  .pop{
+    /* padding: 2%; */
+    /* background-color: lime; */
+    /* color: blue; */
+    height: 12vh;
+    width: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: none;
+  }
+  .pop img{
+    height: 100%;
+    width: 100%;
   }
 
   /* Media queries for responsiveness */
