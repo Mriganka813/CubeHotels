@@ -707,6 +707,87 @@ module.exports.getReport = async (req, res) => {
   }
 };
 
+module.exports.editbookings=async(req,res)=>{
+ const { guestId }=req.params
+ const guest = await Guest.findById(guestId)
+ console.log(guest);
+  return res.render('editbookings',{
+    title:'Edit Booking',
+    guest
+  })
+}
+
+
+
+module.exports.updatebookings = async (req, res) => {
+  const { guestId } = req.params;
+  const {
+    guestName,
+    allGuests,
+    numberOfGuest,
+    adults,
+    children,
+    checkIn,
+    address,
+    phNumber,
+    advPayment,
+    nationality,
+    checkInTime,
+    businessName,
+    guestGst,
+    roomNum,
+    advPaymentMode,
+  } = req.body;
+
+  try {
+    const guest = await Guest.findById(guestId);
+    const oldRoom = guest.roomNum;
+
+    // If Room Number is Changed
+    if (oldRoom !== roomNum) {
+      const room = await Rooms.findOne({ roomNum });
+      const oldRoomObj = await Rooms.findOne({ roomNum: oldRoom });
+
+      // If new roomNum is already taken
+      if (room.occupied === true) {
+        req.flash('error', 'Room is Already Occupied');
+        return res.redirect('back');
+      }
+
+      room.occupied = true;
+      oldRoomObj.occupied = false;
+
+      await oldRoomObj.save();
+      await room.save();
+    }
+
+    // Update guest details here
+    guest.guestName = guestName;
+    guest.allGuests = allGuests;
+    guest.numberOfGuest = numberOfGuest;
+    guest.adults = adults;
+    guest.children = children;
+    guest.checkIn = checkIn;
+    guest.address = address;
+    guest.phNumber = phNumber;
+    guest.advPayment = advPayment;
+    guest.nationality = nationality;
+    guest.checkInTime = checkInTime;
+    guest.businessName = businessName;
+    guest.guestGst = guestGst;
+    guest.roomNum = roomNum;
+    guest.advPaymentMode = advPaymentMode;
+
+    await guest.save();
+    req.flash('success','Details Updated')
+    res.redirect('back')
+
+  } catch (error) {
+    console.error(error);
+    // Handle errors and respond appropriately
+    // You can consider sending an error response or redirecting to an error page
+  }
+};
 
 
 // 

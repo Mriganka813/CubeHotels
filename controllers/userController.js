@@ -191,3 +191,4 @@ module.exports.updateAccount=async(req,res)=>{
           res.status(500).json({ error: 'Error updating user data' });
         }
 }
+

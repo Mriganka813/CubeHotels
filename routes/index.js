@@ -38,6 +38,10 @@ router.get('/del/room/:roomId',isAuthenticatedUser,homeController.deleteRoom)
 
 router.get('/get/invoices/:guestId',homeController.getInvoice)
 
+router.get('/edit/:guestId',isAuthenticatedUser,homeController.editbookings)
+
+router.post('/edit/:guestId',isAuthenticatedUser,homeController.updatebookings)
+
 router.get('/error',async(req,res)=>{
     return res.render('errorPage',{
         title: 'ERROR'
