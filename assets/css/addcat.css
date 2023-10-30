@@ -9,6 +9,14 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
 /* Add this CSS to your existing styles or in a separate CSS file */
 #popupForm {
   display: none;
@@ -16,7 +24,7 @@
 }
 
 .popup-form {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +63,7 @@ body {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(90, 183, 245, 0.863);
   width: 90%;
   max-width: 400px;
   text-align: center;
@@ -155,8 +163,8 @@ body {
   border: none;
   margin-top: 27vh;
   margin-left: 170vh;
-  /* position:sticky; */
-  /* bottom: 100px; */
+  
+  
 
 }
 
@@ -174,7 +182,10 @@ body {
   /* text-align: left; */
 }
 
-
+.popup-form{
+  position:sticky; 
+   bottom: 40%;
+}
 /* Media queries for responsiveness */
 @media (max-width: 600px) {
   .rooms {

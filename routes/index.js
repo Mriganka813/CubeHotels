@@ -29,7 +29,6 @@ router.get('/reports',homeController.reportPage)
 
 router.post('/generate-report',isAuthenticatedUser,homeController.getReport)
 
-router.use('/admin',require('./admin'))
 
 
 router.get('/sample',isAuthenticatedUser,homeController.sample)
@@ -40,7 +39,7 @@ router.get('/get/invoices/:guestId',homeController.getInvoice)
 
 router.get('/edit/:guestId',isAuthenticatedUser,homeController.editbookings)
 
-router.post('/edit/:guestId',isAuthenticatedUser,homeController.updatebookings)
+router.post('/update/:guestId',isAuthenticatedUser,homeController.updatebookings)
 
 router.get('/error',async(req,res)=>{
     return res.render('errorPage',{
@@ -56,6 +55,8 @@ router.get('/checkout-new',async(req,res)=>{
 
 // router.get('/print/bill/:invoiceId',isAuthenticatedUser,homeController.print)
 router.use('/user',require('./user'))
+router.use('/admin',require('./admin'))
+router.use('/superadmin',require('./superadmin'))
 
 
 

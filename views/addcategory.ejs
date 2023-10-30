@@ -31,42 +31,41 @@
                     <%}%>
             </div>
         </div>
-
+        
         <div class="add-btn">
             <button id="openPopup" class="pop">
                 <img src="/image/add.png" alt="">
             </button>
         </div>
-        
+        <div class="popup-form" id="popupForm">
+            <div class="rooms">
+                <form action="/user/addroom" method="post">
+                    <input type="text" name="roomType" id="" placeholder="Enter Category">
+                    <button class="add-btn">Add</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 
     <!-- Add this code inside the <body> element, after your existing content -->
-<div class="popup-form" id="popupForm">
-    <div class="rooms">
-        <form action="/user/addroom" method="post">
-            <input type="text" name="roomType" id="" placeholder="Enter Category">
-            <button class="add-btn">Add</button>
-        </form>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const openButton = document.getElementById('openPopup');
-        const popupForm = document.getElementById('popupForm');
-
-        openButton.addEventListener('click', function () {
-            // Toggle the visibility of the popup form
-            if (popupForm.style.display === 'none' || popupForm.style.display === '') {
-                popupForm.style.display = 'flex';
-            } else {
-                popupForm.style.display = 'none';
-            }
-        });
-    });
-</script>
+        
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const openButton = document.getElementById('openPopup');
+                const popupForm = document.getElementById('popupForm');
+    
+                openButton.addEventListener('click', function () {
+                    // Toggle the visibility of the popup form and center it
+                    if (popupForm.style.display === 'none' || popupForm.style.display === '') {
+                        popupForm.style.display = 'flex';
+                    } else {
+                        popupForm.style.display = 'none';
+                    }
+                });
+            });
+        </script>
 
 
 </body>
