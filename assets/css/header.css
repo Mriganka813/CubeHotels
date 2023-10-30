@@ -79,4 +79,8 @@ a {
     .logo {
         display: none;
     }
+    header{
+        width: 100%;
+    }
 }
+

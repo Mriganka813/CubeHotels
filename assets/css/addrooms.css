@@ -184,3 +184,28 @@ th{
     /* background-color: #5F6FFF; */
     color: #5F6FFF;
 }
+
+
+/* responsive style */
+@media (max-width: 480px){
+.rooms label, select, input {
+    width: 100%; 
+}}
+
+#btn {
+    width:100%; 
+}
+
+
+@media (min-width: 768px) {
+    .rooms label, select, input {
+        width: 50%; 
+    }
+
+    #btn {
+        width: 25%; 
+    }
+}
+
+
+
