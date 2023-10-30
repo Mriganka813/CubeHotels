@@ -1,0 +1,20 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard{
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.block-link{
+
+}
+.block-link .block{
+    display: flex;
+    flex-direction: column;
+}
