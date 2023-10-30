@@ -11,7 +11,13 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
-
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 /* Style the rooms section */
 .rooms {
     margin-top: 4%;

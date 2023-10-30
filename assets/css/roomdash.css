@@ -14,7 +14,13 @@ body {
     /* align-items: center; */
 
 }
-
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 h1 {
     margin-left: 10%;
     margin-top: 2%;

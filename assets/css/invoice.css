@@ -13,6 +13,14 @@
     background-color: aquamarine;
     align-items: center;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 .invoice-data{
     border: 1px solid black;
     /* height: 70vh; */

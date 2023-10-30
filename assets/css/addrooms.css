@@ -5,6 +5,14 @@
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 .form{
     /* background-color: aquamarine; */
     display: flex;

@@ -6,6 +6,13 @@ body {
     background-color: #fff;
   }
   
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
   /* Container for the login form */
   .main {
     display: flex;

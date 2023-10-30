@@ -3,7 +3,13 @@
     display: flex;
     justify-content: center;
 }
-
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 .account-data{
     width: 90%;
     display: flex;

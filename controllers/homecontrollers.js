@@ -151,7 +151,7 @@ module.exports.addRoomCat=async(req,res)=>{
     const userId = req.user.userId;
     const {roomTypeId} = req.params
     const page = req.query.page || 1; // Get the current page from the query string or default to 1.
-    const perPage = process.env.PAGE_COUNT; // Number of rooms per page.
+    const perPage = 15; // Number of rooms per page.
     
     const rooms = await Rooms.find({ owner: userId })
       .skip((page - 1) * perPage) // Skip the rooms on previous pages.
@@ -298,6 +298,9 @@ module.exports.addGuestData = async (req, res) => {
 
 module.exports.renderBookings = async (req, res) => {
   const userId = req.user.userId
+  const page = req.query.page || 1; // Get the current page from the query string or default to 1.
+  const perPage = process.env.PAGE_COUNT; // Number of rooms per page.
+    
   const bookings = await Guest.find()
 
 
@@ -310,22 +313,107 @@ module.exports.renderBookings = async (req, res) => {
 // RECENT BOOKINGS - those who checkout
 module.exports.recentBookings=async(req,res)=>{
   const userId=req.user.userId
+  const page = req.query.page || 1; // Get the current page from the query string or default to 1.
+  const perPage = 15 // Number of rooms per page.
+  
   const bookings = await Guest.find({ status: "leave",hotelId:userId })
+  .skip((page - 1) * perPage) // Skip the rooms on previous pages.
+  .limit(perPage) // Limit the number of rooms on the current page.
+  
+  const totalBookings = await Guest.countDocuments({ status: "leave", hotelId: userId });
+  const totalPages = Math.ceil(totalBookings / perPage);
+  // console.log(totalPages);
   res.render('allbookings', {
     title: 'Recent Bookings',
-    bookings
+    bookings,
+    currentPage: page,
+    totalPages
   })
 
 }
 
+
+
+module.exports.recentBookingSearch = async (req, res) => {
+  try {
+    const { search } = req.body; // Use req.query to get the search parameter from the URL query string
+    const userId = req.user.userId;
+    const page = req.query.page || 1; // Get the current page from the query string or default to 1.
+    const perPage = 15; // Number of rooms per page.
+
+    // Create a filter object for the search
+    const filter = {
+      status: "leave",
+      hotelId: userId,
+      guestName: { $regex: search, $options: 'i' } // Case-insensitive search on guestName
+    };
+
+    const bookings = await Guest.find(filter)
+      .skip((page - 1) * perPage) // Skip the rooms on previous pages.
+      .limit(perPage); // Limit the number of rooms on the current page.
+    // console.log(bookings);
+    const totalBookings = await Guest.countDocuments(filter);
+    const totalPages = Math.ceil(totalBookings / perPage);
+    // console.log(totalPages);
+
+    res.render('allbookings', {
+      title: 'Recent Bookings',
+      bookings,
+      currentPage: page,
+      totalPages,
+    });
+  } catch (error) {
+    console.error(error);
+    // Handle the error and send an error response.
+    res.status(500).send('Internal Server Error');
+  }
+};
+
+
 // Render Checking Bookings 
 module.exports.renderCheckInBookings = async (req, res) => {
   const userId = req.user.userId
+  const page = req.query.page || 1; // Get the current page from the query string or default to 1.
+  const perPage = 15; // Number of rooms per page.
+
   const bookings = await Guest.find({ status: "stay",hotelId:userId })
+  .skip((page - 1) * perPage) // Skip the rooms on previous pages.
+  .limit(perPage);
+
+  const totalBookings = await Guest.countDocuments({ status: "stay", hotelId: userId });
+  const totalPages = Math.ceil(totalBookings / perPage);
 
   res.render('bookings', {
     title: 'Checking Bookings',
-    bookings
+    bookings,
+    currentPage: page,
+    totalPages
+  })
+}
+
+module.exports.renderCheckInBookingSearch = async (req, res) => {
+  const userId = req.user.userId
+  const { search } = req.body;
+  const page = req.query.page || 1; // Get the current page from the query string or default to 1.
+  const perPage = 15; // Number of rooms per page.
+
+  const filter = {
+    status: "stay",
+    hotelId: userId,
+    guestName: { $regex: search, $options: 'i' } // Case-insensitive search on guestName
+  };
+  const bookings = await Guest.find(filter)
+  .skip((page - 1) * perPage) // Skip the rooms on previous pages.
+  .limit(perPage);
+
+  const totalBookings = await Guest.countDocuments(filter);
+  const totalPages = Math.ceil(totalBookings / perPage);
+
+  res.render('bookings', {
+    title: 'Checking Bookings',
+    bookings,
+    currentPage: page,
+    totalPages
   })
 }
 

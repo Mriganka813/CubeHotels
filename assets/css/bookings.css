@@ -2,13 +2,23 @@
 
 .main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: grey;
     margin: 0;
+    width: 100%;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 h2 {
     color: #999;
     font-family: Inter;
@@ -41,7 +51,7 @@ h1 {
 }
 
 .bookings {
-    width: 70%;
+    width: 95%;
     display: flex;
     /* flex-direction: row-reverse; */
     flex-wrap: wrap;
@@ -139,6 +149,74 @@ h1 {
 }
 
 
+.pagination{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin-top: 2%;
+    /* background-color: #999; */
+}
+.pagination ul{
+    width: 80%;
+    display: flex;
+}
+.pagination ul li{
+    list-style: none;
+    margin: 2%;
+    border: 1px solid black;
+    width: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #5F6FFF; */
+}
+.pagination a{
+    text-decoration: none;
+    /* background-color: #5F6FFF; */
+    color: #5F6FFF;
+}
+
+.heading{
+    /* background-color: #5F6FFF; */
+    width: 100%;
+    padding: 2%;
+    text-align: center;
+}
+
+.search{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.search form{
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding: 2%;
+    align-items: center;
+}
+.search form input{
+    width: 80%;
+    height: 6vh;
+    border-radius: 5px;
+    
+}
+.reset{
+    background-color: aquamarine;
+    color: black;
+    height: 6vh;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search form button{
+    /* margin-right: 5%; */
+    height: 6vh;
+    font-size: 1.5rem;
+}
 /* Add responsive media queries for different screen sizes */
 @media (max-width: 768px) {
     .guest {

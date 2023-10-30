@@ -11,34 +11,54 @@
 
 </head>
 
-    <h2>All Bookings</h2>
 
 
 <body>
 
+    <h2 class="heading">All Bookings...</h2>
+    <div class="search">
+        <form action="/recent-bookings/search" method="post">
+            <input type="text" name="search" placeholder="Search" id="">
+            <button type="submit">Search <i class="fa-brands fa-searchengin"></i></button>
+            <a class="reset" href="/checkinbookings">Reset</a>
+        </form>
+    </div>
     <div class="main">
         <div class="bookings">
-            <% for(let i = bookings.length - 1; i >= 0; i--) { %>
-                <% const guest = bookings[i]; %>
-                <div class="guest">
-                    <div class="guest-data">
-                        <p>Guest Name: <%= guest.guestName %></p>
-                        <p>CheckIn: <%= guest.checkIn %> | <%= guest.checkInTime %></p>
-                        <p>Room No.: <%= guest.roomNum %></p>
-                        <p>Booking ID: <%= guest.bookingId %></p>
-                        <p>Status: <%= guest.status %></p>
+            <% for(let i=bookings.length - 1; i>= 0; i--) { %>
+                <% const guest=bookings[i]; %>
+                    <div class="guest">
+                        <div class="guest-data">
+                            <p>Guest Name: <%= guest.guestName %>
+                            </p>
+                            <p>CheckIn: <%= guest.checkIn %> | <%= guest.checkInTime %>
+                            </p>
+                            <p>Room No.: <%= guest.roomNum %>
+                            </p>
+                            <p>Booking ID: <%= guest.bookingId %>
+                            </p>
+                            <p>Status: <%= guest.status %>
+                            </p>
+                        </div>
+                        <div class="action invoice-btn" i>
+                            <!-- <a href="/edit/<%= guest._id %>">Details</a> -->
+                            <a href="/get/invoices/<%= guest._id %>">Invoice</a>
+                        </div>
                     </div>
-                    <div class="action invoice-btn" i>
-                        <!-- <a href="/edit/<%= guest._id %>">Details</a> -->
-                        <a href="/get/invoices/<%= guest._id %>">Invoice</a>
-                    </div>
-                </div>
-            <% } %>
+                    <% } %>
         </div>
-        <div>
+        <div class="pagination">
+            <ul>
+                <% for (let i=1; i <=totalPages; i++) { %>
+                    <%if(totalPages !==1) {%>
+                        <li><a href="/checkinbookings?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                                <%= i %>
+                            </a></li>
+                        <%} } %>
+            </ul>
         </div>
     </div>
-    
+
     </div>
 
 

@@ -12,7 +12,13 @@
 h1 {
     text-align: center;
 }
-
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 form {
     display: flex;
     flex-direction: column;

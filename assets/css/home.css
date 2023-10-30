@@ -5,8 +5,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background-color: #808080; */
     
 }
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 body{
     box-sizing: border-box;
     /* width: 1440px; */

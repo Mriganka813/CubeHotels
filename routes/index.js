@@ -14,7 +14,7 @@ router.post('/book-room/:roomNum',isAuthenticatedUser,homeController.addGuestDat
 router.get('/bookings',isAuthenticatedUser,homeController.renderBookings)
 
 router.get('/recent-bookings',isAuthenticatedUser,homeController.recentBookings)
-
+router.post('/recent-bookings/search',isAuthenticatedUser,homeController.recentBookingSearch)
 router.post('/push-room',isAuthenticatedUser,homeController.addRoom)
 
 router.get('/room-dash',isAuthenticatedUser,homeController.renderRoomDash)
@@ -23,7 +23,9 @@ router.get('/select/:roomName',isAuthenticatedUser,homeController.select)
 router.get('/checkoutpage/:id',isAuthenticatedUser,homeController.checkoutPage)
 
 router.post('/proceed/:guestId',isAuthenticatedUser,homeController.proceedCheckout)
+
 router.get('/checkinbookings',isAuthenticatedUser,homeController.renderCheckInBookings)
+router.post('/checkin-bookings/search',isAuthenticatedUser,homeController.renderCheckInBookingSearch)
 
 router.get('/reports',homeController.reportPage)
 

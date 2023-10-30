@@ -5,7 +5,13 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
   }
+  body::-webkit-scrollbar {
+    display: none;
+  }
   
+  main::-webkit-scrollbar {
+    display: none;
+  }
   /* Global styles */
   body {
     font-family: Arial, sans-serif;

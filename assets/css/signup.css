@@ -13,7 +13,13 @@ body {
     align-items: center;
     height: 100vh;
   }
+  body::-webkit-scrollbar {
+    display: none;
+  }
   
+  main::-webkit-scrollbar {
+    display: none;
+  }
   /* Signup form styles */
   .signup {
     background-color: aliceblue;

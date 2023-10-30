@@ -11,6 +11,13 @@
     width: 80vh;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
 .capital{
     text-transform: capitalize;
 }

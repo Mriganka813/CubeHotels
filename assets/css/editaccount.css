@@ -11,6 +11,14 @@
     justify-content: center;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
+
 .input{
     display: flex;
     flex-direction: column;

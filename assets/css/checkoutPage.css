@@ -16,6 +16,15 @@ body {
     box-sizing: border-box;
     min-height: 100vh;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
 /* main container set  */
 .main {
     min-height: 10vh;

@@ -12,6 +12,14 @@
     margin: 0%;
     font-family: Arial, Helvetica, sans-serif;
 }
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main::-webkit-scrollbar {
+    display: none;
+  }
+
 .billing{
     width: 90%;
     /* background-color: aquamarine; */
