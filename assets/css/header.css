@@ -4,11 +4,10 @@ body {
     padding: 0;
     font-family: Arial, Helvetica, sans-serif
 }
-header{
+
+header {
     /* background-color: black; */
     background-color: #5F6FFF;
-    
-
 }
 
 a {
@@ -47,9 +46,10 @@ a {
 }
 
 /* Style the navigation links */
-.links{
+.links {
     margin-left: 75%;
 }
+
 .links a {
     margin-left: 20px;
     font-size: 18px;
@@ -57,6 +57,7 @@ a {
 
 /* Add responsive styles */
 @media screen and (max-width: 768px) {
+
     /* Adjust the navigation links for smaller screens */
     .links {
         display: none;
@@ -79,4 +80,3 @@ a {
         display: none;
     }
 }
-
