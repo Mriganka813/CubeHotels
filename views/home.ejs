@@ -14,22 +14,9 @@
 <body>
 
     <div class="main">
-
+        
         <div class="dash">
-            <div class="dash-head">
-                <!-- <h1>Welcome, CUBE Hotels</h1> -->
-                <div class="account">
-                    <a class="account-btn" href="/user/account">
-                        <!-- <img src="<%=user.image%>" alt="Account"> -->
-                    </a>
-                </div>
-
-                <div class="signout">
-                    <a class="signout-btn" href="/user/signout">
-                        <!-- <img src="https://cdn-icons-png.flaticon.com/128/1828/1828479.png" alt="SIGN-out"> -->
-                    </a>
-                </div>
-            </div>
+            
             <div class="blocks">
 
                 <div class="cols-block block-1">
@@ -59,9 +46,9 @@
 
                 <div class="cols-block block-2">
 
-                    <a  href="/reports" id="reports">
+                    <a href="/reports" id="reports">
                         <img src="https://cdn-icons-png.flaticon.com/128/1170/1170667.png" alt="REPORTS">
-                        
+
                         <div class="report-btn">
                             <p>Reports</p>
                         </div>
@@ -69,8 +56,15 @@
                 </div>
             </div>
         </div>
+        <div class="stats">
+            <div class="stat-data">
+                <span> <b>Available Rooms: </b> <%=countAvailRoom%></span>
+                <span> <b>Occupied Rooms: </b> <%=countOccupiedRoom%></span>
+                <span> <b>Total Rooms: </b> <%=totalRoom%></span>
+                <span> <b>Total Bookings Till date: </b> <%=totalGuest%></span>
+            </div>
+        </div>
     </div>
-
 </body>
 
 </html>

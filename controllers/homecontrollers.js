@@ -11,11 +11,21 @@ module.exports.home = async function (req, res) {
   try{
     const userId=req.user.userId
     const user = await User.findById(userId)
-    console.log(req.user);
+    const totalRoom = await Rooms.countDocuments({owner:userId,})
+    const countAvailRoom = await Rooms.countDocuments({owner:userId,occupied:false})
+    const countOccupiedRoom = await Rooms.countDocuments({owner:userId,occupied:true})
+    const totalGuest = await Guest.countDocuments({hotelId:userId})
+    // console.log(totalRoom,countAvailRoom,countOccupiedRoom);
+   
     return res.render('home', {
             title: "home",// Pass the user object to the template
-            user
+            user,
+            totalRoom,
+            countAvailRoom,
+            countOccupiedRoom,
+            totalGuest
           });
+
   }catch(err){
     res.send(err)
   }
