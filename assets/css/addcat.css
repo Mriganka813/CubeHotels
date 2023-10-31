@@ -99,6 +99,11 @@ body {
 .rooms button:hover {
   background-color: #0056b3;
 }
+h1{
+  color: #999;
+  font-family: Inter;
+  /* font-weight: 600; */
+}
 
 .add-rooms {
   color: whitesmoke;
@@ -174,6 +179,10 @@ body {
     margin-left: 170vh; */
   height: 100%;
   width: 100%;
+  opacity:1;
+}
+.pop img:hover{
+  opacity: 0.85;
 }
 
 .room-data h1 {

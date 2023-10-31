@@ -19,8 +19,8 @@ body::-webkit-scrollbar {
   main::-webkit-scrollbar {
     display: none;
   }
-h2 {
-    color: #999;
+/* h1 {
+    color: grey;
     font-family: Inter;
     font-size: 35px;
     font-style: normal;
@@ -29,11 +29,11 @@ h2 {
     width: 565px;
     height:fit-content;
     flex-shrink: 0;
-    /* text-align: center; */
+    text-align: center;
     justify-content: center;
     align-items: start;
     margin: 1%;
-}
+} */
 
 * {
     margin: 0%;
@@ -179,8 +179,12 @@ h1 {
 .heading{
     /* background-color: #5F6FFF; */
     width: 100%;
-    padding: 2%;
+    padding: 0;
     text-align: center;
+    color: #999;
+    margin: 0;
+    /* font-weight: 600; */
+    font-family: Inter;
 }
 
 .search{
@@ -203,14 +207,18 @@ h1 {
     
 }
 .reset{
-    background-color: aquamarine;
-    color: black;
+    background-color:#5F6FFF;
+    color: #fff;
+    border-radius: 10px;
     height: 6vh;
     padding-left: 2%;
     padding-right: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.reset:hover{
+    background-color: #2c40f0;;
 }
 .search form button{
     /* margin-right: 5%; */
