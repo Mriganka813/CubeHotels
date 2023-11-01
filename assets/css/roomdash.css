@@ -161,6 +161,16 @@ h1 {
     .room-type p {
         font-size: 16px;
     }
+    .vertical {
+        width: 100%;
+        margin: 5px;
+    }
+    .room-book{
+        width: auto;
+    }
+    .occupied{
+        width:  auto;
+    }
 }
 
 @media screen and (max-width: 480px) {

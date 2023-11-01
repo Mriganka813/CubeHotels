@@ -25,7 +25,8 @@
     min-height: 100vh;
   }
   .rnum{
-    background-color: gray;
+    background-color:#5F6FFF;
+    color: #f0f8ff;
   }
   /* main container */
   .main{

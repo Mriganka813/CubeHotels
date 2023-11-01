@@ -82,9 +82,9 @@ body::-webkit-scrollbar {
 .calculation{
     padding: 1%;
 }
-.upper-table{
-    /* border: 1px solid black; */
-}
+/* .upper-table{
+    border: 1px solid rgb(234, 8, 8);
+} */
 table,tr,th,td{
     border: 1px solid transparent;
     
@@ -118,7 +118,11 @@ th{
 }
 .tot{
     margin-top: 3%;
-    background-color: rgb(156, 153, 153);
+    background-color: #5f6fff;
+    color: #f0f8ff;
+}
+.heading{
+    color: #999;
 }
 .bottom{
     display: flex;
@@ -130,4 +134,32 @@ th{
     color: grey;
     margin-bottom: 4%;
 }
+
+/* Media queries for responsiveness */
+@media (max-width: 800px) {
+    .invoice {
+        width: 95%; 
+    }
+    
+    .bill-data {
+        flex-direction: column; 
+    }
+    
+    .address {
+        padding: 1%; 
+    }
+
+    .button {
+        height: auto; 
+    }
+
+    .button button {
+        padding: 5px; 
+    }
+
+    .lower {
+        width: 100%; 
+    }
+}
+
 

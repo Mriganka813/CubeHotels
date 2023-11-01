@@ -199,6 +199,39 @@ h1{
 @media (max-width: 600px) {
   .rooms {
     width: 100%;
-    border-radius: 0;
+    border-radius: 10px;
+  }
+  .popup-form {
+    position: sticky; 
+    margin-top:0; 
+  }
+  .room-type{
+    font-size:0.75rem;
+    text-align: center;
+  }
+  .add-rooms{
+    width: auto;
+    height: auto;
+    font-size: 0.8rem;
+    margin-left: auto;
+  }
+  #delete-icn{
+    padding:2%;
+  }
+}
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .room-data h1 {
+    margin-right: 0; 
+    text-align: center; 
+  }
+  
+  .pop {
+    margin-left: 0; 
+  }
+  
+  .popup-form {
+    position: sticky; 
+    margin-top:0; 
   }
 }
