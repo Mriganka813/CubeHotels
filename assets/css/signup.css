@@ -49,7 +49,7 @@ body {
   }
   
   .signup button {
-    background-color: #5332e3;
+    background-color: #5F6FFF;
     color: #fff;
     padding: 10px;
     border: none;
@@ -60,7 +60,7 @@ body {
   }
   
   .signup button:hover {
-    background-color: #0056b3;
+    background-color:  #0056b3;
     
   }
   

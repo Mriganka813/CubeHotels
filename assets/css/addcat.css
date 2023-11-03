@@ -51,7 +51,7 @@ body {
 .room-data {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   height: 100%;
   align-items: center;
   justify-content: space-between;
@@ -205,18 +205,22 @@ h1{
     position: sticky; 
     margin-top:0; 
   }
+  .room-data{
+    width: 100%;
+  }
   .room-type{
-    font-size:0.75rem;
+    font-size:0.71rem;
     text-align: center;
+    width: 100%;
   }
   .add-rooms{
     width: auto;
     height: auto;
-    font-size: 0.8rem;
+    font-size: 0.77rem ;
     margin-left: auto;
   }
   #delete-icn{
-    padding:2%;
+    padding:3%;
   }
 }
 /* Media queries for responsiveness */
@@ -227,7 +231,17 @@ h1{
   }
   
   .pop {
-    margin-left: 0; 
+    margin-left:100%; 
+    margin-top: 40vh;
+    width: 10vh;
+    height:10vh;
+  }
+  .room-type{
+    width: 100%;
+    
+  }
+  .room-data{
+    width: 100%;
   }
   
   .popup-form {
