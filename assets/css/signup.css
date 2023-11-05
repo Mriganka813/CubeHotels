@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #fff;
+    color: #100101;
   }
   
   /* Container for the form */
@@ -29,12 +30,14 @@ body {
     width: 90%;
     max-width: 400px;
     text-align: center;
+    color: #100101;
   }
   
   .signup form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    color: #100101;
   }
   
   .signup input,
@@ -44,13 +47,14 @@ body {
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
-    color: #f0f8ff;
+    /* color: #f0f8ff; */
+    color: #100101;
     font-weight: 700;
   }
   
   .signup button {
     background-color: #5F6FFF;
-    color: #fff;
+    /* color: #fff; */
     padding: 10px;
     border: none;
     border-radius: 5px;

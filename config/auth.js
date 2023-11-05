@@ -20,7 +20,7 @@ exports.isAuthenticatedUser = async (req, res, next) => {
 
     // Store the decoded token in the request object
     req.user = decodedToken;
-
+    // res.locals.user = user;
     // Proceed to the next middleware or route handler
     next();
   } catch (error) {

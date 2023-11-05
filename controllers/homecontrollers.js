@@ -447,20 +447,20 @@ module.exports.proceedCheckout=async(req,res)=>{
     const { guestId } = req.params
     
     const hotelId = req.user.userId
-    console.log(hotelId);
+    // console.log(hotelId);
     const guest = await Guest.findById(guestId)
     guest.checkOut = checkOutDate
     guest.status = 'leave'
     guest.checkOutTime = checkOutTime
     await guest.save()
-    console.log(guest);
+    // console.log(guest);
     const room = await Rooms.findById(guest.roomId)
     // console.log(room);
     // Change Checkout Status
  
     console.log('check');
     const hotel = await User.findById(hotelId)
-    console.log(hotel);
+    // console.log(hotel);
     // console.log('check');
     // Update Room Status
     room.occupied = false
@@ -487,12 +487,15 @@ module.exports.proceedCheckout=async(req,res)=>{
       gstAmt,
       paymentMode
     })
+
+    
     console.log('saving....');
     await invoice.save()
     console.log('saved');
     guest.invoiceId = invoice._id
     guest.paymentMode = paymentMode
     await guest.save()
+    console.log('..check...');
 
     return res.render('invoices', {
       title: "Invoice",
@@ -504,7 +507,7 @@ module.exports.proceedCheckout=async(req,res)=>{
 
 
   }catch(error){
-    res.send|(error)
+    res.send(error)
   }
 }
 
@@ -600,11 +603,15 @@ module.exports.checkout = async (req, res) => {
 module.exports.getInvoice=async(req,res)=>{
   try{
     const {guestId} = req.params
+    
     const guest= await Guest.findById(guestId)
     const invoice = await Invoice.findById(guest.invoiceId)
+    // console.log(guest);
     const userId = invoice.hotelId
     const hotel = await User.findById(userId)
     const room = await Rooms.findById(guest.roomId)
+
+    console.log(invoice);
 
     return res.render('invoices',{
       title:'INVOICE',
@@ -648,71 +655,7 @@ module.exports.reportPage=async(req,res)=>{
   })
 }
 
-// Send reports in excel files 
-// module.exports.getReport = async (req, res) => {
-//   const userId = req.user.userId;
-//   const { startDate, endDate } = req.body;
 
-//   try {
-//     // Fetch the invoices from your database based on the userId and date range
-//     const invoices = await Invoice.find({
-//       hotelId: userId,
-
-//       createdAt: { $gte: startDate, $lte: endDate }, // Assuming you have a createdAt field for timestamps
-//     });
-
-//     // Create a new Excel workbook and worksheet
-//     const workbook = new ExcelJS.Workbook();
-//     const worksheet = workbook.addWorksheet('Invoices');
-
-//     // Define the headers for the Excel file based on your schema
-//     worksheet.columns = [
-//       { header: 'Guest Name', key: 'guestName' },
-//       { header: 'Room Number', key: 'roomNum' },
-//       { header: 'Check-In', key: 'checkIn' },
-//       { header: 'Check-Out', key: 'checkOut' },
-//       { header: 'Advance', key: 'advance' },
-//       { header: 'Discount', key: 'discount' },
-//       { header: 'Service Charge', key: 'serviceCharge' },
-//       { header: 'GST', key: 'gst' },
-//       { header: 'Net Amount', key: 'net' },
-//       // Add more headers as needed
-//     ];
-
-//     // Add the invoice data to the worksheet
-//     invoices.forEach((invoice) => {
-//       worksheet.addRow({
-//         guestName: invoice.guestName,
-//         roomNum: invoice.roomNum,
-//         checkIn: invoice.checkIn,
-//         checkOut: invoice.checkOut,
-//         advance: invoice.advance,
-//         discount: invoice.discount,
-//         serviceCharge: invoice.serviceCharge,
-//         gst: invoice.gst,
-//         net: invoice.net,
-//         // Add more data columns as needed
-//       });
-//     });
-
-//     // Set the response headers to specify that you are sending an Excel file
-//     res.setHeader(
-//       'Content-Type',
-//       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-//     );
-//     res.setHeader(
-//       'Content-Disposition',
-//       'attachment; filename=invoice_report.xlsx'
-//     );
-
-//     // Send the Excel file to the client
-//     await workbook.xlsx.write(res);
-//     res.end();
-//   } catch (error) {
-//     console.error('Error generating Excel report:', error);
-//     return res.status(500).send('Internal Server Error');
-//   }
-// };
 
 
 
@@ -888,71 +831,3 @@ module.exports.updatebookings = async (req, res) => {
 };
 
 
-// 
-// const puppeteer = require('puppeteer');
-// var fs         = require('fs');
-
-
-
-
-// module.exports.print = async (req, res) => {
-//   try {
-//     const { invoiceId } = req.params;
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-
-//     // Load the HTML content from the URL
-//     await page.goto(`http://localhost:8007/get/invoices/${invoiceId}`);
-   
-
-    
-//     // Define the selector to capture
-//     const selector = '#invoice';
-//     await page.waitForSelector('#invoice');
-//     const elementHandle = await page.$(selector);
-
-//     // Load your CSS file
-//     const css = fs.readFileSync('./assets/css/bill.css', 'utf8');
-
-//     // Get the HTML content of the element
-//     const html = await page.evaluate(element => element.outerHTML, elementHandle);
-
-//     const { width, height } = await page.evaluate(element => {
-//       const rect = element.getBoundingClientRect();
-//       return { width: rect.width, height: rect.height };
-//     }, elementHandle);
-//     // Create a new page and set the CSS and HTML content
-//     const newPage = await browser.newPage();
-//     await newPage.setContent(`<style>${css}</style>${html}`);
-
-    
-//     // Generate the PDF
-//     const pdf = await newPage.pdf({
-//       // format: 'A4',
-//       preferCSSPageSize: true,
-//       printBackground: true,
-//       fullPage: true,
-//       width: '176mm',
-//       padding:{
-//           top: '0mm',
-//         bottom: '0mm',
-//         left: '0mm',
-//         right: '0mm'
-//       },
-//       margin: {
-//         top: '0mm',
-//         bottom: '0mm',
-//         left: '0mm',
-//         right: '0mm'
-//       }
-//   });
-
-//     await browser.close();
-
-//     res.set('Content-Type', 'application/pdf');
-//     res.send(pdf);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Internal Server Error');
-//   }
-// };

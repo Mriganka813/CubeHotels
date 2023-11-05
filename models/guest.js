@@ -103,7 +103,7 @@ const guestSchema = mongoose.Schema({
         type: String
     },
     paymentMode:{
-        type:Number
+        type:String
     }
    },
     {
