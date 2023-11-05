@@ -15,7 +15,7 @@ const storage = multer.memoryStorage();
 
 
 router.post('/signup', upload.single('image'), userController.signup);
-router.get('/login-page',async(req,res)=>{
+router.get('/login-page',isAuthenticatedUser,async(req,res)=>{
     return res.render('login',{
         title:'Login',
         excludeHeader: true 

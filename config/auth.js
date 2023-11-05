@@ -1,26 +1,26 @@
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'mysecretKey';
 
-
 exports.isAuthenticatedUser = async (req, res, next) => {
   const { token } = req.cookies;
-    // console.log(token);
-  if (!token) {
-    return res.redirect('/user/login-page');
-  }
 
   try {
-    // Verify the token
-    const decodedToken = jwt.verify(token, JWT_SECRET);
+    if (token) {
+      // Verify the token
+      const decodedToken = jwt.verify(token, JWT_SECRET);
 
-    // Check if the token is valid
-    if (!decodedToken) {
-      return res.status(401).json({ error: 'Invalid token' });
+      // Check if the token is valid
+      if (decodedToken) {
+        // Store the decoded token in the request object
+        req.user = decodedToken;
+        // Make the 'user' object available in all EJS templates
+        res.locals.user = req.user;
+      }
+    } else {
+      // If no token is found, set 'user' to null or another default value
+      res.locals.user = null; // Or any other default value
     }
 
-    // Store the decoded token in the request object
-    req.user = decodedToken;
-    // res.locals.user = user;
     // Proceed to the next middleware or route handler
     next();
   } catch (error) {
@@ -30,8 +30,6 @@ exports.isAuthenticatedUser = async (req, res, next) => {
     }
 
     console.error(error);
-    return res
-      .status(500)
-      .json({ error: 'An error occurred during authentication' });
+    return res.status(500).json({ error: 'An error occurred during authentication' });
   }
 };
