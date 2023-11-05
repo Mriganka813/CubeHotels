@@ -94,6 +94,7 @@ module.exports.addCategoryPage=async(req,res)=>{
   const userId = req.user.userId
   const user = await User.findById(userId)
   const category = await RoomTypes.find({owner:userId})
+  
   return res.render('addcategory',{
     title:'Category',
     category

@@ -161,15 +161,17 @@ module.exports.addRoomCat=async(req,res)=>{
     const userId = req.user.userId;
     const {roomTypeId} = req.params
     const page = req.query.page || 1; // Get the current page from the query string or default to 1.
-    const perPage = 15; // Number of rooms per page.
+    const perPage = 1; // Number of rooms per page.
     
     const rooms = await Rooms.find({ owner: userId })
-      .skip((page - 1) * perPage) // Skip the rooms on previous pages.
-      .limit(perPage) // Limit the number of rooms on the current page.
-      
+  .sort({ _id: -1 }) // Reverse order by _id (or another suitable field)
+  .skip((page - 1) * perPage) // Skip the rooms on previous pages.
+  .limit(perPage);
+  
+    console.log(rooms);
     const totalRooms = await Rooms.countDocuments({ owner: userId });
     const totalPages = Math.ceil(totalRooms / perPage);
-    
+    console.log(totalPages);
     const Category = await RoomTypes.findById(roomTypeId);
     
     res.render('addCatRoom', {
@@ -177,7 +179,8 @@ module.exports.addRoomCat=async(req,res)=>{
       rooms,
       Category,
       currentPage: page,
-      totalPages
+      totalPages,
+      roomTypeId
     });
   } catch (err) {
     res.send(err);

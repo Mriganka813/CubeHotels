@@ -19,7 +19,7 @@
                 <form action="/push-room" method="post" class="add-rooms">
 
                     <div class="rooms">
-                        <label for="roomType">Select Room Type</label>
+                        <label for="roomType">Select Room Type...</label>
 
                         <select name="roomType">
                            
@@ -51,7 +51,7 @@
                         <th>Occupied</th>
                         <th></th>
                     </tr>
-                    <% rooms.sort((a, b) => b.createdAt - a.createdAt).forEach(room => { %>
+                    <% for(let room of rooms) {%>
                         <tr>
                             <td><%= room.roomNum %></td>
                             <td><%= room.roomType %></td>
@@ -61,20 +61,87 @@
                             <td><%= room.occupied %></td>
                             <td><a href="/del/room/<%= room._id %>"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
-                    <% }); %>
+                    <% } %>
                 </table>
 
                 
                   
                   <!-- Pagination controls -->
+                  
                   <div class="pagination">
                     <ul>
-                      <% for (let i = 1; i <= totalPages; i++) { %>
-                        <%if(totalPages !== 1) {%>
-                        <li><a href="/addrooms?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
-                      <%} } %>
+                      <% if (totalPages <= 2) { %>
+                        <% for (let i = 1; i <= totalPages; i++) { %>
+                          <li>
+                            <a href="/addrooms-cat/<%=roomTypeId%>?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                              <%= i %>
+                            </a>
+                          </li>
+                        <% } %>
+                      <% } else { %>
+                        <li>
+                          <a href="/addrooms-cat/<%=roomTypeId%>?page=1" class="">
+                            1
+                          </a>
+                        </li>
+                        
+                  
+                        <% if (currentPage <= 5) { %>
+                          <% for (let i = 2; i <= 9; i++) { %>
+                            <li>
+                              <a href="/addrooms-cat/<%=roomTypeId%>?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                                <%= i %>
+                              </a>
+                            </li>
+                          <% } %>
+                          <li><span>...</span></li>
+                          <li>
+                            <a href="/addrooms-cat/<%=roomTypeId%>?page=<%= totalPages %>" class="">
+                              <%= totalPages %>
+                            </a>
+                          </li>
+                        <% } else if (currentPage >= totalPages - 4) { %>
+                          <li>
+                            <a href="/addrooms-cat/<%=roomTypeId%>?page=2" class="">
+                              2
+                            </a>
+                          </li>
+                          <li><span>...</span></li>
+                  
+                          <% for (let i = totalPages - 8; i <= totalPages; i++) { %>
+                            <li>
+                              <a href="/addrooms-cat/<%=roomTypeId%>?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                                <%= i %>
+                              </a>
+                            </li>
+                          <% } %>
+                        <% } else { %>
+                          <li>
+                            <a href="/addrooms-cat/<%=roomTypeId%>?page=2" class="">
+                              2
+                            </a>
+                          </li>
+                          <li><span>...</span></li>
+                  
+                          <% for (let i = currentPage - 3; i <= currentPage + 3; i++) { %>
+                            <li>
+                              <a href="/addrooms-cat/<%=roomTypeId%>?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                                <%= i %>
+                              </a>
+                            </li>
+                          <% } %>
+                  
+                          <li><span>...</span></li>
+                          <li>
+                            <a href="/addrooms-cat/<%=roomTypeId%>?page=<%= totalPages %>" class="">
+                              <%= totalPages %>
+                            </a>
+                          </li>
+                        <% } %>
+                      <% } %>
                     </ul>
                   </div>
+                  
                   
             </div>
             
