@@ -23,47 +23,53 @@ module.exports.createAdmin=async(req,res)=>{
 }
 
 module.exports.renderLogin=async(req,res)=>{
-    return res.render('adminlogin',{
+    return res.render('admin/adminlogin',{
         title:'LOGIN'
     })
 }
 
-module.exports.loginAdmin=async function(req,res){
+module.exports.loginAdmin = async function (req, res) {
     try {
-        const { email, password } = req.body;
-    
-        // Find the user by email
-        const admin = await Admin.findOne({ email });
-        console.log(admin);
-    
-        if (!admin) {
-          return res.status(401).json({ error: 'Invalid credentials' });
-        }
-    
-        // Check if the password is correct (handled in the User schema)
-        const isPasswordValid = await bcrypt.compare(password, admin.password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ error: 'Invalid credentials' });
-        }
-    
-        // Generate JWT token
-        const token = jwt.sign({ userId: admin._id,admin }, process.env.SECRET_KEY);
-        
-        // Set the token in a cookie
-        res.cookie('token', token, { httpOnly: true });
-    
-       res.render('superadmin',{
-        title:'Dashboard'
-       });
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+      const { email, password } = req.body;
+  
+      // Find the admin by email
+      const admin = await Admin.findOne({ email });
+      console.log(admin);
+  
+      if (!admin) {
+        return res.status(401).json({ error: 'Invalid credentials' });
       }
-}
+  
+      // Check if the password is correct using bcrypt
+      const isPasswordValid = await bcrypt.compare(password, admin.password);
+      if (!isPasswordValid) {
+        return res.status(401).json({ error: 'Invalid credentials' });
+      }
+  
+      // Check if the user is an admin
+      if (!admin.isAdmin) {
+        return res.status(401).json({ error: 'Not an admin' });
+      }
+  
+      // Generate JWT token for the admin
+      const token = jwt.sign({ userId: admin._id, isAdmin: true }, process.env.SECRET_KEY);
+  
+      // Set the token in a cookie
+      res.cookie('token', token, { httpOnly: true });
+      res.locals.user = admin;
+  
+      // Redirect to the admin dashboard (you can change the URL accordingly)
+      res.redirect('/admin/dashboard');
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+  
 
 module.exports.dashboard=async(req,res)=>{
 
-    return res.render('superadmin',{
+    return res.render('admin/superadmin',{
         title:'SUPER ADMIN'
     })
 }

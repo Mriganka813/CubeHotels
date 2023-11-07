@@ -27,7 +27,7 @@ router.post('/proceed/:guestId',isAuthenticatedUser,homeController.proceedChecko
 router.get('/checkinbookings',isAuthenticatedUser,homeController.renderCheckInBookings)
 router.post('/checkin-bookings/search',isAuthenticatedUser,homeController.renderCheckInBookingSearch)
 
-router.get('/reports',homeController.reportPage)
+router.get('/reports',isAuthenticatedUser,homeController.reportPage)
 
 router.post('/generate-report',isAuthenticatedUser,homeController.getReport)
 
@@ -58,7 +58,7 @@ router.get('/checkout-new',async(req,res)=>{
 // router.get('/print/bill/:invoiceId',isAuthenticatedUser,homeController.print)
 router.use('/user',require('./user'))
 router.use('/admin',require('./admin'))
-router.use('/superadmin',require('./superadmin'))
+// router.use('/superadmin',require('./superadmin'))
 
 
 
