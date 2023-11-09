@@ -10,7 +10,7 @@ router.get('/addrooms',isAuthenticatedUser,homeController.renderAddRoom)
 router.get('/add-guest/:roomId',isAuthenticatedUser,homeController.addGuest)
 router.get('/addrooms-cat/:roomTypeId',isAuthenticatedUser,homeController.addRoomCat)
 
-router.post('/book-room/:roomNum',isAuthenticatedUser,homeController.addGuestData)
+router.post('/book-room/:roomId',isAuthenticatedUser,homeController.addGuestData)
 router.get('/bookings',isAuthenticatedUser,homeController.renderBookings)
 
 router.get('/recent-bookings',isAuthenticatedUser,homeController.recentBookings)

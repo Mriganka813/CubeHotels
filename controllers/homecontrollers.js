@@ -10,6 +10,7 @@ const User = require('../models/user')
 module.exports.home = async function (req, res) {
   try{
     const userId=req.user.userId
+    console.log('ppp');
     const user = await User.findById(userId)
     const totalRoom = await Rooms.countDocuments({owner:userId,})
     const countAvailRoom = await Rooms.countDocuments({owner:userId,occupied:false})
@@ -256,6 +257,7 @@ module.exports.addGuestData = async (req, res) => {
   try {
     const hotelId = req.user.userId
     // const {roomNum} = req.params
+    const {roomId} = req.params
     const {
       guestName,
       allGuests,
@@ -284,7 +286,7 @@ module.exports.addGuestData = async (req, res) => {
   }
 
     // Find the room by roomNum
-    const room = await Rooms.findOne({ roomNum });
+    const room = await Rooms.findById(roomId);
 
     if (!room) {
       // Handle the case where the room with the provided roomNum doesn't exist

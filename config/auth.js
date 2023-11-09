@@ -3,7 +3,6 @@ const JWT_SECRET = 'mysecretKey';
 
 exports.isAuthenticatedUser = async (req, res, next) => {
   const { token } = req.cookies;
-
   try {
     if (token) {
       // Verify the token
@@ -19,6 +18,7 @@ exports.isAuthenticatedUser = async (req, res, next) => {
     } else {
       // If no token is found, set 'user' to null or another default value
       res.locals.user = null; // Or any other default value
+      return res.redirect('/user/login-page')
     }
 
     // Proceed to the next middleware or route handler

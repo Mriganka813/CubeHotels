@@ -5,6 +5,7 @@ const multer = require('multer');
 const upload = require('../config/upload')
 const {isAuthenticatedUser}=require('../config/auth')
 router.get('/signup-page',async(req,res)=>{
+    res.locals.user = null
     return res.render('signup',{
         title:'Register'
     })
@@ -15,8 +16,10 @@ const storage = multer.memoryStorage();
 
 
 router.post('/signup', upload.single('image'), userController.signup);
-router.get('/login-page',isAuthenticatedUser,async(req,res)=>{
+router.get('/login-page',async(req,res)=>{
+    res.locals.user = null
     return res.render('login',{
+
         title:'Login',
         excludeHeader: true 
     })
