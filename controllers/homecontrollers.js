@@ -162,7 +162,8 @@ module.exports.addRoomCat=async(req,res)=>{
     const userId = req.user.userId;
     const {roomTypeId} = req.params
     const page = req.query.page || 1; // Get the current page from the query string or default to 1.
-    const perPage = 1; // Number of rooms per page.
+    const perPage = 15
+    ; // Number of rooms per page.
     
     const rooms = await Rooms.find({ owner: userId })
   .sort({ _id: -1 }) // Reverse order by _id (or another suitable field)
