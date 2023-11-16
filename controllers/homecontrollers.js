@@ -767,7 +767,10 @@ module.exports.editbookings=async(req,res)=>{
 
 
 module.exports.updatebookings = async (req, res) => {
+
+  const userId = req.user.userId;
   const { guestId } = req.params;
+  
   const {
     guestName,
     allGuests,
@@ -789,11 +792,18 @@ module.exports.updatebookings = async (req, res) => {
   try {
     const guest = await Guest.findById(guestId);
     const oldRoom = guest.roomNum;
+    
+    const findRoom = await Rooms.findOne({roomNum,owner:userId})
+    if(!findRoom){
+      req.flash('error','Room Not Found .....');
+      return res.redirect('back')
+    }
+
 
     // If Room Number is Changed
     if (oldRoom !== roomNum) {
-      const room = await Rooms.findOne({ roomNum });
-      const oldRoomObj = await Rooms.findOne({ roomNum: oldRoom });
+      const room = await Rooms.findOne({ roomNum,owner:userId });
+      const oldRoomObj = await Rooms.findOne({ roomNum: oldRoom,owner:userId });
 
       // If new roomNum is already taken
       if (room.occupied === true) {

@@ -1,3 +1,4 @@
+
 function updateNet() {
     const netAmount = document.getElementById('net');
     const gstPercent = parseFloat(document.getElementById('gst').value);
