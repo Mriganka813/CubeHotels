@@ -1,20 +1,27 @@
-
-function updateNet(){
-    const netAmount = document.getElementById('net')
-    const gstPercent = parseInt(document.getElementById('gst').value)
-    const discount = parseInt(document.getElementById('discount').value)
-    const advance = parseInt(document.getElementById('advance').value)
-    const additional = parseInt(document.getElementById('additional').value)
-    const day = parseInt(document.getElementById('night').value)
-    const price = parseInt(document.getElementById('priceNight').value)
-    const gstAmt = document.getElementById('gstAmt')
-    const totalPrice = day * price
-    const gstAmmount = totalPrice * gstPercent/100
-
-    const net = (totalPrice + gstAmmount + additional)- advance - discount
-    gstAmt.value=gstAmmount
-    netAmount.value = net
-}
+function updateNet() {
+    const netAmount = document.getElementById('net');
+    const gstPercent = parseFloat(document.getElementById('gst').value);
+    const discount = parseFloat(document.getElementById('discount').value);
+    const advance = parseFloat(document.getElementById('advance').value);
+    const additional = parseFloat(document.getElementById('additional').value);
+    const day = parseInt(document.getElementById('night').value);
+    const price = parseFloat(document.getElementById('priceNight').value);
+    const gstAmt = document.getElementById('gstAmt');
+  
+    // Check if parsed values are valid numbers
+    if (isNaN(gstPercent) || isNaN(discount) || isNaN(advance) || isNaN(additional) || isNaN(day) || isNaN(price)) {
+      console.error('Invalid input. Please enter valid numbers.');
+      return;
+    }
+  
+    const totalPrice = day * price;
+    const gstAmount = totalPrice * gstPercent / 100;
+  
+    const net = (totalPrice + gstAmount + additional) - advance - discount;
+    gstAmt.value = gstAmount.toFixed(2);
+    netAmount.value = net.toFixed(2);
+  }
+  
 
 // Get the Check-Out date input element
 function countDays() {
@@ -70,8 +77,7 @@ function calculateGstPercentage() {
     const gstPercentage = (gstAmount / basePrice) * 100;
 
     // Update the GST percentage field with the calculated value
-    document.getElementById('gst').value = parseInt(gstPercentage.toFixed(2)); // Round to 2 decimal places
+    document.getElementById('gst').value = parseFloat(gstPercentage.toFixed(2)); // Round to 2 decimal places
     updateNet()
 
 }
-
