@@ -1,4 +1,7 @@
 
+
+
+
 function updateNet() {
     const netAmount = document.getElementById('net');
     const gstPercent = parseFloat(document.getElementById('gst').value);
@@ -79,6 +82,27 @@ function calculateGstPercentage() {
 
     // Update the GST percentage field with the calculated value
     document.getElementById('gst').value = parseFloat(gstPercentage.toFixed(2)); // Round to 2 decimal places
-    updateNet()
+    changeNet(gstAmount)
 
 }
+
+function changeNet(gstAmount){
+    const netAmount = document.getElementById('net');
+    const discount = parseFloat(document.getElementById('discount').value);
+    const advance = parseFloat(document.getElementById('advance').value);
+    const additional = parseFloat(document.getElementById('additional').value);
+    const day = parseInt(document.getElementById('night').value);
+    const price = parseFloat(document.getElementById('priceNight').value);
+    
+    if (isNaN(discount) || isNaN(advance) || isNaN(additional) || isNaN(day) || isNaN(price)) {
+      console.error('Invalid input. Please enter valid numbers.');
+      return;
+    }
+    const totalPrice = day * price;
+    const net = (totalPrice + gstAmount + additional) - advance - discount;
+    netAmount.value = net.toFixed(2);
+
+    
+
+}
+
