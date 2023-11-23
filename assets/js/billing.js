@@ -98,11 +98,14 @@ function changeNet(gstAmount){
       console.error('Invalid input. Please enter valid numbers.');
       return;
     }
-    const totalPrice = day * price;
+    const totalPrice = parseFloat(document.getElementById('basePrice').value)
     const net = (totalPrice + gstAmount + additional) - advance - discount;
     netAmount.value = net.toFixed(2);
+}
 
+function changeRent(){
+    const rent = parseFloat(document.getElementById('priceNight').value)
+    const basePrice = document.getElementById('basePrice')
     
-
 }
 
