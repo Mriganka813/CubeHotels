@@ -11,7 +11,7 @@ function updateNet() {
     const day = parseInt(document.getElementById('night').value);
     const price = parseFloat(document.getElementById('priceNight').value);
     const gstAmt = document.getElementById('gstAmt');
-  
+    
     // Check if parsed values are valid numbers
     if (isNaN(gstPercent) || isNaN(discount) || isNaN(advance) || isNaN(additional) || isNaN(day) || isNaN(price)) {
       console.error('Invalid input. Please enter valid numbers.');
@@ -19,8 +19,12 @@ function updateNet() {
     }
   
     const totalPrice = day * price;
-    const gstAmount = totalPrice * gstPercent / 100;
-  
+    let taxablePrice = totalPrice
+    if(discount > 0){
+        taxablePrice = totalPrice - discount
+    }
+    let gstAmount = taxablePrice * gstPercent / 100;
+    gstAmount = Math.ceil(gstAmount);
     const net = (totalPrice + gstAmount + additional) - advance - discount;
     gstAmt.value = gstAmount.toFixed(2);
     netAmount.value = net.toFixed(2);
