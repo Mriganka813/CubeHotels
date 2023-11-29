@@ -451,12 +451,17 @@ module.exports.proceedCheckout=async(req,res)=>{
     }=req.body
 
     const { guestId } = req.params
-    
+    console.log(guestId);
+    console.log(net);
+
     const hotelId = req.user.userId
-    // console.log(hotelId);
+    console.log(hotelId);
+
     const guest = await Guest.findById(guestId)
+    
     guest.checkOut = checkOutDate
     guest.status = 'leave'
+    guest.stay = night
     guest.checkOutTime = checkOutTime
     await guest.save()
     // console.log(guest);
@@ -464,7 +469,7 @@ module.exports.proceedCheckout=async(req,res)=>{
     // console.log(room);
     // Change Checkout Status
  
-    console.log('check');
+    
     const hotel = await User.findById(hotelId)
     // console.log(hotel);
     // console.log('check');
@@ -491,17 +496,21 @@ module.exports.proceedCheckout=async(req,res)=>{
       stay:night,
       hotelId,
       gstAmt,
-      paymentMode
+      paymentMode,
+      checkInTime:guest.checkInTime,
+      checkOutTime:checkOutTime,
+      advancePayment:guest.advPayment
     })
 
     
-    console.log('saving....');
+   
     await invoice.save()
-    console.log('saved');
+    
     guest.invoiceId = invoice._id
     guest.paymentMode = paymentMode
     await guest.save()
-    console.log('..check...');
+    console.log(guest);
+    
 
     return res.render('invoices', {
       title: "Invoice",
@@ -541,7 +550,7 @@ module.exports.checkout = async (req, res) => {
     } = req.body
     
 
-    console.log(req.body);
+    
     const guest = await Guest.findById(id)
 
     guest.checkOut = cout
@@ -554,18 +563,18 @@ module.exports.checkout = async (req, res) => {
     room.guest = null
     await room.save()
     
-    // console.log(guest);
     
     
     
+    console.log(stays);
     const preNet = parseInt(net) + parseInt(adv)
     
     const subTotal = room.price * parseInt(stays)
-    console.log(subTotal);
+    
     const calGst= subTotal * room.gst/100
-    console.log(calGst);
+    console.log(subTotal);
     const total = (subTotal + calGst + parseInt(service) )- parseInt(disc) 
-    console.log(total);
+    
 
 
     const invoice = new Invoice({ 
@@ -681,13 +690,11 @@ module.exports.getReport = async (req, res) => {
 
   try {
     // Fetch the reports from your database based on the userId, stay, and date range
-    const reports = await Guest.find({
+    const reports = await Invoice.find({
       hotelId: userId,
-      status: "leave",
-      createdAt: { $gte: startDate, $lte: endDate }, // Assuming you have a createdAt field for timestamps
+      updatedAt: { $gte: startDate, $lte: endDate }, // Assuming you have a createdAt field for timestamps
     });
 
-    console.log(reports);
     // Create a new Excel workbook and worksheet
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Reports');
@@ -714,22 +721,23 @@ module.exports.getReport = async (req, res) => {
     // Add the report data to the worksheet
     for (const report of reports) {
       const room = await Rooms.findOne({ roomNum: report.roomNum });
+      const guest = await Guest.findOne({_id:report.guestId})
       worksheet.addRow({
         guestName: report.guestName,
-        checkInDate: report.checkIn,
-        checkInTime: report.checkInTime,
-        checkOutDate: report.checkOut,
-        checkOutTime: report.checkOutTime,
+        checkInDate: guest.checkIn,
+        checkInTime: guest.checkInTime,
+        checkOutDate: report.checkout,
+        checkOutTime: guest.checkOutTime,
         roomNum: report.roomNum,
         stay: report.stay,
         rent: room.price,
         roomGst: room.gst,
-        advance: report.advance,
+        advance: guest.advance,
         discount: report.discount,
         serviceCharge: report.serviceCharge,
         gst: report.gst,
         net: report.net, // change net from invoice
-        address:report.address,
+        address:guest.address,
         paymentMode:report.paymentMode
         // Add more data columns as needed
       });

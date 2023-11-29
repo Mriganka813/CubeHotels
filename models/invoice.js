@@ -34,7 +34,13 @@ const invoiceSchema = mongoose.Schema({
     checkout:{
         type:String
     },
-    checlIn:{
+    checkIn:{
+        type:String
+    },
+    checkInTime:{
+        type:String
+    },
+    checkOutTime:{
         type:String
     },
     gst:{
@@ -63,6 +69,9 @@ const invoiceSchema = mongoose.Schema({
     },
     paymentMode:{
         type:String
+    },
+    advancePayment:{
+        type:Number
     }
    },
     {
