@@ -710,11 +710,13 @@ module.exports.getReport = async (req, res) => {
       { header: 'Rent', key: 'rent' },
       { header: 'Days', key: 'stay' },
       { header: 'GST Percent', key: 'roomGst' },
+      { header: 'Subtotal', key: 'net' },
       { header: 'Discount', key: 'discount' },
+      { header: 'GST Ammount', key: 'gstAmt' },
       { header: 'Service Charge', key: 'serviceCharge' },
-      { header: 'Net Amount', key: 'net' },
       { header: 'Address', key: 'address' },
       { header: 'Payment Mode', key: 'paymentMode' },
+    
       // Add more headers as needed
     ];
 
@@ -736,7 +738,8 @@ module.exports.getReport = async (req, res) => {
         discount: report.discount,
         serviceCharge: report.serviceCharge,
         gst: report.gst,
-        net: report.net, // change net from invoice
+        gstAmt: report.gstAmt,
+        net: report.rent, // change net from invoice
         address:guest.address,
         paymentMode:report.paymentMode
         // Add more data columns as needed
